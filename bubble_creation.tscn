@@ -1,96 +1,97 @@
-[gd_scene load_steps=28 format=3 uid="uid://cpy4b4vl4jqcp"]
+[gd_scene load_steps=29 format=3 uid="uid://dsxug37thk0my"]
 
-[ext_resource type="Script" path="res://addons/rmsmartshape/shapes/shape_closed.gd" id="1_rukih"]
-[ext_resource type="Script" path="res://addons/rmsmartshape/vertex_properties.gd" id="2_ljya7"]
-[ext_resource type="Script" path="res://addons/rmsmartshape/shapes/point.gd" id="3_urtqa"]
-[ext_resource type="Script" path="res://addons/rmsmartshape/shapes/point_array.gd" id="4_vif5o"]
-[ext_resource type="Script" path="res://addons/rmsmartshape/materials/edge_material_metadata.gd" id="5_ikqse"]
-[ext_resource type="Script" path="res://addons/rmsmartshape/materials/edge_material.gd" id="6_8le1c"]
-[ext_resource type="Texture2D" uid="uid://bqmjlbarkphxq" path="res://assets/bubble_edge.png" id="7_lfyd0"]
-[ext_resource type="Script" path="res://addons/rmsmartshape/normal_range.gd" id="8_l8hyd"]
-[ext_resource type="Texture2D" uid="uid://gebbaah3nbgo" path="res://assets/BUBBLE3.png" id="9_tquhh"]
-[ext_resource type="Script" path="res://addons/rmsmartshape/materials/shape_material.gd" id="10_5eguq"]
+[ext_resource type="Texture2D" uid="uid://byhxn52kmyq6s" path="res://icon.svg" id="1_otjtl"]
+[ext_resource type="Script" path="res://addons/rmsmartshape/shapes/shape_closed.gd" id="2_n52kq"]
+[ext_resource type="Script" path="res://addons/rmsmartshape/vertex_properties.gd" id="3_3yw0m"]
+[ext_resource type="Script" path="res://addons/rmsmartshape/shapes/point.gd" id="4_30heg"]
+[ext_resource type="Script" path="res://addons/rmsmartshape/shapes/point_array.gd" id="5_v5mmf"]
+[ext_resource type="Script" path="res://addons/rmsmartshape/materials/edge_material_metadata.gd" id="6_sp1rw"]
+[ext_resource type="Script" path="res://addons/rmsmartshape/materials/edge_material.gd" id="7_5enhv"]
+[ext_resource type="Texture2D" uid="uid://bqmjlbarkphxq" path="res://assets/bubble_edge.png" id="8_bfqnv"]
+[ext_resource type="Script" path="res://addons/rmsmartshape/normal_range.gd" id="9_g8vni"]
+[ext_resource type="Texture2D" uid="uid://gebbaah3nbgo" path="res://assets/BUBBLE3.png" id="10_nru57"]
+[ext_resource type="Script" path="res://addons/rmsmartshape/materials/shape_material.gd" id="11_ojc6e"]
 
 [sub_resource type="Resource" id="Resource_5ybc5"]
-script = ExtResource("2_ljya7")
+script = ExtResource("3_3yw0m")
 texture_idx = 0
 flip = false
 width = 1.0
 
 [sub_resource type="Resource" id="Resource_2cno5"]
-script = ExtResource("3_urtqa")
+script = ExtResource("4_30heg")
 position = Vector2(-133.408, -90.2558)
 point_in = Vector2(0, 0)
 point_out = Vector2(0, 0)
 properties = SubResource("Resource_5ybc5")
 
 [sub_resource type="Resource" id="Resource_5d5xw"]
-script = ExtResource("2_ljya7")
+script = ExtResource("3_3yw0m")
 texture_idx = 0
 flip = false
 width = 1.0
 
 [sub_resource type="Resource" id="Resource_4wrxp"]
-script = ExtResource("3_urtqa")
+script = ExtResource("4_30heg")
 position = Vector2(112.778, 112.042)
 point_in = Vector2(0, 0)
 point_out = Vector2(0, 0)
 properties = SubResource("Resource_5d5xw")
 
 [sub_resource type="Resource" id="Resource_5xajr"]
-script = ExtResource("2_ljya7")
+script = ExtResource("3_3yw0m")
 texture_idx = 0
 flip = false
 width = 1.0
 
 [sub_resource type="Resource" id="Resource_m0jdi"]
-script = ExtResource("3_urtqa")
+script = ExtResource("4_30heg")
 position = Vector2(218.773, 12.9898)
 point_in = Vector2(0, 0)
 point_out = Vector2(0, 0)
 properties = SubResource("Resource_5xajr")
 
 [sub_resource type="Resource" id="Resource_s3lem"]
-script = ExtResource("2_ljya7")
+script = ExtResource("3_3yw0m")
 texture_idx = 0
 flip = false
 width = 1.0
 
 [sub_resource type="Resource" id="Resource_bdah2"]
-script = ExtResource("3_urtqa")
+script = ExtResource("4_30heg")
 position = Vector2(-133.408, -90.2558)
 point_in = Vector2(0, 0)
 point_out = Vector2(0, 0)
 properties = SubResource("Resource_s3lem")
 
 [sub_resource type="Resource" id="Resource_g8onk"]
-script = ExtResource("2_ljya7")
+script = ExtResource("3_3yw0m")
 texture_idx = 0
 flip = false
 width = 1.0
 
 [sub_resource type="Resource" id="Resource_cq7um"]
-script = ExtResource("3_urtqa")
+script = ExtResource("4_30heg")
 position = Vector2(-166.355, 120.064)
 point_in = Vector2(0, 0)
 point_out = Vector2(0, 0)
 properties = SubResource("Resource_g8onk")
 
 [sub_resource type="Resource" id="Resource_xterg"]
-script = ExtResource("2_ljya7")
+script = ExtResource("3_3yw0m")
 texture_idx = 0
 flip = false
 width = 1.0
 
 [sub_resource type="Resource" id="Resource_1aypn"]
-script = ExtResource("3_urtqa")
+script = ExtResource("4_30heg")
 position = Vector2(99.9194, -147.78)
 point_in = Vector2(-132.325, -98.3282)
 point_out = Vector2(8.98987, 113.871)
 properties = SubResource("Resource_xterg")
 
 [sub_resource type="Resource" id="Resource_lrx5g"]
-script = ExtResource("4_vif5o")
+script = ExtResource("5_v5mmf")
 _points = {
 0: SubResource("Resource_2cno5"),
 1: SubResource("Resource_4wrxp"),
@@ -110,8 +111,8 @@ tessellation_tolerance = 6.0
 curve_bake_interval = 20.0
 
 [sub_resource type="Resource" id="Resource_arvjd"]
-script = ExtResource("6_8le1c")
-textures = Array[Texture2D]([ExtResource("7_lfyd0")])
+script = ExtResource("7_5enhv")
+textures = Array[Texture2D]([ExtResource("8_bfqnv")])
 textures_corner_outer = Array[Texture2D]([])
 textures_corner_inner = Array[Texture2D]([])
 textures_taper_left = Array[Texture2D]([])
@@ -124,13 +125,13 @@ use_taper_texture = true
 fit_mode = 0
 
 [sub_resource type="Resource" id="Resource_0f5bl"]
-script = ExtResource("8_l8hyd")
+script = ExtResource("9_g8vni")
 begin = 0.0
 distance = 360.0
 edgeRendering = Vector2(0, 0)
 
 [sub_resource type="Resource" id="Resource_cbnxt"]
-script = ExtResource("5_ikqse")
+script = ExtResource("6_sp1rw")
 edge_material = SubResource("Resource_arvjd")
 normal_range = SubResource("Resource_0f5bl")
 weld = true
@@ -141,9 +142,9 @@ z_as_relative = true
 offset = 0.0
 
 [sub_resource type="Resource" id="Resource_q20eb"]
-script = ExtResource("10_5eguq")
-_edge_meta_materials = Array[ExtResource("5_ikqse")]([SubResource("Resource_cbnxt")])
-fill_textures = Array[Texture2D]([ExtResource("9_tquhh")])
+script = ExtResource("11_ojc6e")
+_edge_meta_materials = Array[ExtResource("6_sp1rw")]([SubResource("Resource_cbnxt")])
+fill_textures = Array[Texture2D]([ExtResource("10_nru57")])
 fill_texture_z_index = 0
 fill_texture_show_behind_parent = false
 fill_texture_scale = 1.0
@@ -154,8 +155,15 @@ fill_texture_angle_offset = 0.0
 fill_mesh_offset = 0.0
 render_offset = 0.0
 
-[node name="bubble" type="Node2D"]
+[node name="BubbleCreation" type="Node2D"]
+
+[node name="Icon" type="Sprite2D" parent="."]
+z_index = -1
+scale = Vector2(3.755, 3.755)
+texture = ExtResource("1_otjtl")
+
+[node name="bubble" type="Node2D" parent="."]
 texture_repeat = 2
-script = ExtResource("1_rukih")
+script = ExtResource("2_n52kq")
 _points = SubResource("Resource_lrx5g")
 shape_material = SubResource("Resource_q20eb")

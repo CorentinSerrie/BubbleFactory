@@ -19,7 +19,7 @@ width = 1.0
 
 [sub_resource type="Resource" id="Resource_2cno5"]
 script = ExtResource("3_urtqa")
-position = Vector2(32.6904, 13.7301)
+position = Vector2(-14.2466, -7.70673)
 point_in = Vector2(0, 0)
 point_out = Vector2(0, 0)
 properties = SubResource("Resource_5ybc5")
@@ -32,7 +32,7 @@ width = 1.0
 
 [sub_resource type="Resource" id="Resource_4wrxp"]
 script = ExtResource("3_urtqa")
-position = Vector2(43.9814, 72.6772)
+position = Vector2(-2.95563, 51.2403)
 point_in = Vector2(0, 0)
 point_out = Vector2(0, 0)
 properties = SubResource("Resource_5d5xw")
@@ -45,7 +45,7 @@ width = 1.0
 
 [sub_resource type="Resource" id="Resource_m0jdi"]
 script = ExtResource("3_urtqa")
-position = Vector2(100.288, 49.8771)
+position = Vector2(53.3514, 28.4403)
 point_in = Vector2(0, 0)
 point_out = Vector2(0, 0)
 properties = SubResource("Resource_5xajr")
@@ -58,7 +58,7 @@ width = 1.0
 
 [sub_resource type="Resource" id="Resource_bdah2"]
 script = ExtResource("3_urtqa")
-position = Vector2(32.6904, 13.7301)
+position = Vector2(-14.2466, -7.70673)
 point_in = Vector2(0, 0)
 point_out = Vector2(0, 0)
 properties = SubResource("Resource_s3lem")
@@ -71,7 +71,7 @@ width = 1.0
 
 [sub_resource type="Resource" id="Resource_cq7um"]
 script = ExtResource("3_urtqa")
-position = Vector2(9.21042, 51.5681)
+position = Vector2(-37.7266, 30.1313)
 point_in = Vector2(0, 0)
 point_out = Vector2(0, 0)
 properties = SubResource("Resource_g8onk")
@@ -84,9 +84,9 @@ width = 1.0
 
 [sub_resource type="Resource" id="Resource_1aypn"]
 script = ExtResource("3_urtqa")
-position = Vector2(72.1184, 6.03415)
-point_in = Vector2(-19.4456, -6.34961)
-point_out = Vector2(19.4456, 6.34961)
+position = Vector2(40.1983, -24.4129)
+point_in = Vector2(-7.96545, -26.4095)
+point_out = Vector2(0, 0)
 properties = SubResource("Resource_xterg")
 
 [sub_resource type="Resource" id="Resource_lrx5g"]
@@ -103,7 +103,7 @@ _point_order = PackedInt32Array(3, 5, 2, 1, 4, 0)
 _constraints = {
 Vector2i(0, 3): 15
 }
-_next_key = 6
+_next_key = 9
 _material_overrides = {}
 tessellation_stages = 3
 tessellation_tolerance = 6.0
@@ -144,7 +144,7 @@ offset = 0.0
 script = ExtResource("10_5eguq")
 _edge_meta_materials = Array[ExtResource("5_ikqse")]([SubResource("Resource_cbnxt")])
 fill_textures = Array[Texture2D]([ExtResource("9_kw80g")])
-fill_texture_z_index = -10
+fill_texture_z_index = 0
 fill_texture_show_behind_parent = false
 fill_texture_scale = 1.0
 fill_texture_absolute_position = false

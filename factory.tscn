@@ -1,0 +1,103 @@
+[gd_scene load_steps=5 format=3 uid="uid://bax0pcpnh1j3f"]
+
+[ext_resource type="Script" path="res://machine.gd" id="1_ccy0d"]
+[ext_resource type="Script" path="res://factory.gd" id="1_h41np"]
+[ext_resource type="Texture2D" uid="uid://byhxn52kmyq6s" path="res://icon.svg" id="2_l52c2"]
+[ext_resource type="PackedScene" uid="uid://cpy4b4vl4jqcp" path="res://ma_nouvelle_bulle_trop_stylee.tscn" id="2_qchq2"]
+
+[node name="Factory" type="Node2D" node_paths=PackedStringArray("button", "machine_A", "bubble")]
+script = ExtResource("1_h41np")
+button = NodePath("ui/Button")
+machine_A = NodePath("machine_1")
+bubble = NodePath("SS2D_Shape_Closed2")
+
+[node name="SS2D_Shape_Closed2" parent="." instance=ExtResource("2_qchq2")]
+position = Vector2(54, 584)
+
+[node name="machine_1" type="Node2D" parent="." node_paths=PackedStringArray("entrance_position", "exit_position", "validate_button", "redo_button", "strenght_slider", "angle_slider", "strenght_label", "angle_label")]
+position = Vector2(628, 604)
+script = ExtResource("1_ccy0d")
+entrance_position = NodePath("entrance")
+exit_position = NodePath("exit")
+validate_button = NodePath("../ui/Button2")
+redo_button = NodePath("../ui/redo")
+strenght_slider = NodePath("../ui/strength_slider")
+angle_slider = NodePath("../ui/angle_slider")
+strenght_label = NodePath("../ui/strength_value")
+angle_label = NodePath("../ui/angle_value")
+
+[node name="entrance" type="Node2D" parent="machine_1"]
+position = Vector2(-164, 2)
+
+[node name="exit" type="Node2D" parent="machine_1"]
+position = Vector2(153, 4)
+
+[node name="Sprite2D" type="Sprite2D" parent="machine_1"]
+texture = ExtResource("2_l52c2")
+
+[node name="ui" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="ui"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 759.0
+offset_right = 195.0
+offset_bottom = 823.0
+text = "Enter First Machine"
+
+[node name="Button2" type="Button" parent="ui"]
+layout_mode = 0
+offset_left = 498.0
+offset_top = 716.0
+offset_right = 669.0
+offset_bottom = 780.0
+text = "validate"
+
+[node name="redo" type="Button" parent="ui"]
+layout_mode = 0
+offset_left = 698.0
+offset_top = 718.0
+offset_right = 869.0
+offset_bottom = 782.0
+text = "redo
+"
+
+[node name="strength_slider" type="HSlider" parent="ui"]
+layout_mode = 0
+offset_left = 500.0
+offset_top = 791.0
+offset_right = 756.0
+offset_bottom = 823.0
+max_value = 2.0
+step = 0.01
+
+[node name="strength_value" type="Label" parent="ui"]
+layout_mode = 0
+offset_left = 545.0
+offset_top = 830.0
+offset_right = 585.0
+offset_bottom = 853.0
+text = "0"
+
+[node name="angle_slider" type="HSlider" parent="ui"]
+layout_mode = 0
+offset_left = 503.0
+offset_top = 870.0
+offset_right = 759.0
+offset_bottom = 902.0
+max_value = 180.0
+step = 0.1
+
+[node name="angle_value" type="Label" parent="ui"]
+layout_mode = 0
+offset_left = 544.0
+offset_top = 910.0
+offset_right = 584.0
+offset_bottom = 933.0
+text = "0"

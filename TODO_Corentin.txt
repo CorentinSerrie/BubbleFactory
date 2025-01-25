@@ -1,0 +1,7 @@
+Limit shape size
+center shape afte transform
+2 more machines
+exit to score screen
+intro
+main menu
+proper ui transitions/locks

@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var button : Button
+@export var button : BaseButton
 @export var shape_picker : OptionButton
 @export var start_position : Node2D
 @export var machines : Array[BubbleMachine]

@@ -73,6 +73,9 @@ ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("3_ca2uj")
 
+[node name="Click" type="AudioStreamPlayer" parent="Go button"]
+stream = ExtResource("4_eckhn")
+
 [node name="Start button" type="TextureButton" parent="."]
 layout_mode = 0
 offset_left = 64.0
@@ -84,6 +87,9 @@ texture_pressed = SubResource("AtlasTexture_tdp50")
 ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("3_ca2uj")
+
+[node name="Click" type="AudioStreamPlayer" parent="Start button"]
+stream = ExtResource("4_eckhn")
 
 [node name="Reset button" type="TextureButton" parent="."]
 layout_mode = 0
@@ -97,6 +103,9 @@ ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("3_ca2uj")
 
+[node name="Click" type="AudioStreamPlayer" parent="Reset button"]
+stream = ExtResource("4_eckhn")
+
 [node name="Next Button" type="TextureButton" parent="."]
 layout_mode = 0
 offset_left = 64.0
@@ -109,7 +118,7 @@ ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("3_ca2uj")
 
-[node name="Click" type="AudioStreamPlayer" parent="."]
+[node name="Click" type="AudioStreamPlayer" parent="Next Button"]
 stream = ExtResource("4_eckhn")
 
 [node name="HSlider" type="HSlider" parent="."]

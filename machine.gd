@@ -8,6 +8,7 @@ extends Node2D
 
 @export var slide_duration : float = 1
 @export var bubble_max_size : int = 200
+@export var animate_process: bool = true
 
 var is_busy : bool = false
 var current_shape : SS2D_Shape
@@ -74,10 +75,15 @@ func EnterShape(shape : SS2D_Shape) -> void:
 
 func _ProcessShape(shape : SS2D_Shape, reset: bool = false) -> void:
 	_SetCurrentPosition( BubblePosition.inside)
+
+
 	var tween = get_tree().create_tween()
+	if(animate_process):
+		tween.tween_property(shape, "scale", Vector2.ZERO, slide_duration)
+		tween.parallel()
 	tween.tween_property(shape, "global_position", global_position, slide_duration)
 	tween.tween_callback((
-		func (): 
+		func ():
 			if(reset):
 				_ResetShape(shape)
 			match current_type:
@@ -89,9 +95,38 @@ func _ProcessShape(shape : SS2D_Shape, reset: bool = false) -> void:
 					pass
 	))
 	tween.tween_interval(1)
+	if(animate_process):
+		tween.tween_callback(
+			func(): 
+				var center_tween = get_tree().create_tween()
+				for i in range(0,10):
+					center_tween.tween_interval(slide_duration/10)
+					center_tween.tween_callback(
+						func(): 
+							_CenterShape(shape)
+							print(shape.global_position)
+					)
+		)
+		tween.tween_property(shape, "scale", Vector2.ONE, slide_duration)
+		tween.parallel()
 	tween.tween_property(shape, "global_position", exit_position.global_position, slide_duration)
-	tween.tween_callback(func(): _SetCurrentPosition(BubblePosition.exit))
+	tween.tween_callback(
+		func(): 
+			_SetCurrentPosition(BubblePosition.exit)
+	)
 	pass
+
+
+func IsShapeValid(shape: SS2D_Shape) -> bool:
+	var points: PackedVector2Array = shape.get_point_array().get_tessellated_points()
+	if points.size() < 3:
+		return false
+	# Produce the fill mesh
+	var fill_tris: PackedInt32Array = Geometry2D.triangulate_polygon(points)
+	if fill_tris.is_empty():
+		return false
+
+	return true
 
 func _ValidateShape(shape : SS2D_Shape) -> void:
 	_SetCurrentPosition(BubblePosition.out)

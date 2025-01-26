@@ -1,6 +1,8 @@
 extends Node2D
 
 @export var button : Button
+@export var shape_picker : OptionButton
+@export var start_position : Node2D
 @export var machines : Array[BubbleMachine]
 @export var bubble: SS2D_Shape
 @export var camera: Camera2D
@@ -10,6 +12,9 @@ extends Node2D
 @export var circle_center: Node2D
 @export var circle_in: Polygon2D
 @export var circle_out: Polygon2D
+@export var presentation_parent: Node2D
+
+var bubble_list = preload("bubble_shape_list.tres")
 
 var camera_zoom: float = 0.95
 
@@ -18,23 +23,63 @@ var current_machine:int = 0
 var circle_edge_count : int = 100
 var initial_bubble:SS2D_Shape
 
+var initial_polygon_array: PackedVector2Array
+var initial_polygon_point_in: PackedVector2Array
+var initial_polygon_point_out: PackedVector2Array
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	outro_panel.visible = false
 	button.pressed.connect(OnButtonPressed)
-	initial_bubble = bubble.duplicate()
+
+	bubble.queue_free()
+	_SetShapeOptions()	
 	pass # Replace with function body.
 
 func Restart() -> void:
 	outro_panel.visible = false
 	current_machine = 0
+	_ResetShape(bubble)
+
 	bubble.queue_free()
-	bubble = initial_bubble.duplicate()
+
+func _SetShapeOptions() -> void:
+	shape_picker.clear()
+	for i in range(0, bubble_list.names.size()):
+		shape_picker.add_item(bubble_list.names[i], i)
+
+func _StartWithShape(index: int) -> void:
+	print(bubble_list)
+	print(bubble_list.list)
+	print(bubble_list.list[index])
+	bubble = bubble_list.list[index].instantiate()
 	add_child(bubble)
 	move_child(bubble, 2)
+	bubble.position = start_position.position
+	_SaveInitialShape(bubble)
+	pass
+	
 
+func _SaveInitialShape(shape: SS2D_Shape) -> void:
+	initial_polygon_array.clear()
+	initial_polygon_point_in.clear()
+	initial_polygon_point_out.clear()
+	for i in shape._points._point_order:		
+		var point = shape._points._points[i]
+		initial_polygon_array.append(point.position)
+		initial_polygon_point_in.append(point.point_in)
+		initial_polygon_point_out.append(point.point_out)
+	pass
+
+func _ResetShape(shape: SS2D_Shape) -> void:
+	for i in range(0, initial_polygon_array.size()):		
+		var point = shape._points._points[shape._points._point_order[i]]
+		point.position = initial_polygon_array[i]
+		point.point_in = initial_polygon_point_in[i]
+		point.point_out = initial_polygon_point_out[i]
 
 func OnButtonPressed() -> void:
+	_StartWithShape(shape_picker.selected)
 	EnterMachine(current_machine)
 
 func ShapeValidated(_shape: SS2D_Shape) -> void:
@@ -65,8 +110,8 @@ func LaunchOutro() -> void:
 	outro_panel.visible = true
 	var bubble_one = bubble.duplicate()
 	var bubble_two = bubble.duplicate()
-	outro_panel.add_child(bubble_one)
-	outro_panel.move_child(bubble_one, 1)
+	presentation_parent.add_child(bubble_one)
+	presentation_parent.move_child(bubble_one, 2)
 	circle_out.add_child(bubble_two)
 	var radius = GetShapeRadius(bubble_one)
 	UpdateCirclePolygons(radius)

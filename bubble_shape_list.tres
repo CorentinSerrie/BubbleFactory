@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=5 format=3 uid="uid://dywaxnpe75g12"]
+
+[ext_resource type="PackedScene" uid="uid://cpy4b4vl4jqcp" path="res://ma_nouvelle_bulle_trop_stylee.tscn" id="1_fm2p5"]
+[ext_resource type="PackedScene" uid="uid://x7n1t1f7qgqc" path="res://bubble_1.tscn" id="2_p34d2"]
+[ext_resource type="PackedScene" uid="uid://bg01442lniwsy" path="res://bubble_2.tscn" id="3_u07ar"]
+[ext_resource type="Script" path="res://bubble_shape_list.gd" id="4_uipqu"]
+
+[resource]
+script = ExtResource("4_uipqu")
+list = Array[Resource]([ExtResource("1_fm2p5"), ExtResource("2_p34d2"), ExtResource("3_u07ar")])
+names = Array[String](["test_1", "test_2", "test_3"])

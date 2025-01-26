@@ -1,11 +1,13 @@
 	Limit shape size
 	center shape after transform
 
-2 more machines
 	exit to score screen
 	intro
-main menu
 	proper ui transitions/locks
 	
 	scoring computation
+	
 error -> redo only
+main menu
+2 more machines
+	choose initial shape

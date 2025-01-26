@@ -242,7 +242,6 @@ func _StarShape(shape: SS2D_Shape, angle: float, strength: float) -> void:
 	for i in shape._points._points:
 		var point = shape._points._points[i]
 		var angle_vector_x : Vector2 = Vector2.from_angle(deg_to_rad(angle))
-		var angle_vector_y : Vector2 = angle_vector_x.rotated(PI/2)
 
 		var delta_pos : Vector2 = point.position - center
 

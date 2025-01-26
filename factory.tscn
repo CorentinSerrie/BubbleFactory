@@ -214,6 +214,8 @@ texture = SubResource("ViewportTexture_p6sn5")
 stretch_mode = 5
 
 [node name="intro_panel" type="TextureRect" parent="ui"]
+visible = false
+z_index = 1
 layout_mode = 0
 offset_left = -2150.0
 offset_top = -1210.0

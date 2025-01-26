@@ -28,6 +28,8 @@ var initial_polygon_array: PackedVector2Array
 var initial_polygon_point_in: PackedVector2Array
 var initial_polygon_point_out: PackedVector2Array
 
+var finished_once: bool = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	outro_panel.visible = false
@@ -43,7 +45,8 @@ func Restart() -> void:
 	shape_picker_container.visible = true
 	current_machine = 0
 	_ResetShape(bubble)
-
+	if(finished_once):
+		_ClearOutroPresentation()
 	bubble.queue_free()
 
 func _SetShapeOptions() -> void:
@@ -111,6 +114,7 @@ func EnterMachine(index: int) -> void:
 	machines[index].shape_validated.connect(ShapeValidated)
 
 func LaunchOutro() -> void:
+	finished_once = true
 	outro_panel.visible = true
 	var bubble_one = bubble.duplicate()
 	var bubble_two = bubble.duplicate()
@@ -127,6 +131,15 @@ func LaunchOutro() -> void:
 
 	var score = (1 - difference_area/circle_area) * 100
 	outro_score.text = ("accuracy: %0.2f%%" % score)
+
+func _ClearOutroPresentation() -> void:
+	var bubble_one = presentation_parent.get_child(2)
+	presentation_parent.remove_child(bubble_one)
+	bubble_one.queue_free()
+
+	var bubble_two = circle_out.get_child(0)
+	presentation_parent.remove_child(bubble_two)
+	bubble_two.queue_free()
 
 func CenterShapeInOutro(shape: SS2D_Shape) -> void:
 	machines[0]._CenterShape(shape)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://7oa3qlfebnex"
-path="res://.godot/imported/icon_slider_grabber-desesmorts.png-ccf38669fc2afe91e5f300300516f628.ctex"
+uid="uid://dux6t50owq3qf"
+path="res://.godot/imported/ppt_presentation_without_background.png-786ea91c4eecc0473fbacdd7df59c936.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/UI assets/icon_slider_grabber-desesmorts.png"
-dest_files=["res://.godot/imported/icon_slider_grabber-desesmorts.png-ccf38669fc2afe91e5f300300516f628.ctex"]
+source_file="res://assets/UI assets/ppt_presentation_without_background.png"
+dest_files=["res://.godot/imported/ppt_presentation_without_background.png-786ea91c4eecc0473fbacdd7df59c936.ctex"]
 
 [params]
 

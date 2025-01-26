@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://o21fns1nsobt"
-path="res://.godot/imported/Organisation Chart - UI toolkit 1.jpg-f6294388b13844a164af188f4d3ff366.ctex"
+uid="uid://bxnbset2cehug"
+path="res://.godot/imported/Organisation Chart - Other assets.jpg-3895b9fb0074e02d98a3dc36f589ca23.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/UI assets/Organisation Chart - UI toolkit 1.jpg"
-dest_files=["res://.godot/imported/Organisation Chart - UI toolkit 1.jpg-f6294388b13844a164af188f4d3ff366.ctex"]
+source_file="res://assets/UI assets/Backup UI files/Organisation Chart - Other assets.jpg"
+dest_files=["res://.godot/imported/Organisation Chart - Other assets.jpg-3895b9fb0074e02d98a3dc36f589ca23.ctex"]
 
 [params]
 

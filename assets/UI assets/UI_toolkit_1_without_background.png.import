@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bgvhip7s0arky"
-path="res://.godot/imported/Organisation Chart - UI toolkit 2 - dialogues.jpg-c65a3f276a9e09ffb9774c6efd8953fa.ctex"
+uid="uid://dgrt5i50ag5oo"
+path="res://.godot/imported/UI_toolkit_1_without_background.png-4686977991d36b06e7627216708cb969.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/UI assets/Organisation Chart - UI toolkit 2 - dialogues.jpg"
-dest_files=["res://.godot/imported/Organisation Chart - UI toolkit 2 - dialogues.jpg-c65a3f276a9e09ffb9774c6efd8953fa.ctex"]
+source_file="res://assets/UI assets/UI_toolkit_1_without_background.png"
+dest_files=["res://.godot/imported/UI_toolkit_1_without_background.png-4686977991d36b06e7627216708cb969.ctex"]
 
 [params]
 

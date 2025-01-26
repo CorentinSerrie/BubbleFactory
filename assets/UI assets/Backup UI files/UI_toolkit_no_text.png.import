@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b756mcui1ja82"
-path="res://.godot/imported/Bubble_factory_endgame_UI_enviro.png-832e7a3ba5b3cf14fa451836df878ec6.ctex"
+uid="uid://de8udtf2nbrx6"
+path="res://.godot/imported/UI_toolkit_no_text.png-4bfcf072f083ca407860e445138619b0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/UI assets/Bubble_factory_endgame_UI_enviro.png"
-dest_files=["res://.godot/imported/Bubble_factory_endgame_UI_enviro.png-832e7a3ba5b3cf14fa451836df878ec6.ctex"]
+source_file="res://assets/UI assets/Backup UI files/UI_toolkit_no_text.png"
+dest_files=["res://.godot/imported/UI_toolkit_no_text.png-4bfcf072f083ca407860e445138619b0.ctex"]
 
 [params]
 

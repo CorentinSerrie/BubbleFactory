@@ -27,6 +27,10 @@ circle_out = NodePath("ui/outro_panel/circle_out")
 position = Vector2(-948, -380)
 texture = ExtResource("2_n4ilt")
 
+[node name="Entity" type="Sprite2D" parent="."]
+position = Vector2(167, -386)
+texture = ExtResource("6_ibmwj")
+
 [node name="SS2D_Shwape_Closed2" parent="." instance=ExtResource("2_qchq2")]
 position = Vector2(-1635, -322)
 
@@ -51,10 +55,6 @@ scale = Vector2(3.755, 3.755)
 texture = ExtResource("2_l52c2")
 
 [node name="camera_position" type="Node2D" parent="machine_1"]
-
-[node name="Entity" type="Sprite2D" parent="."]
-position = Vector2(167, -386)
-texture = ExtResource("6_ibmwj")
 
 [node name="machine_2" type="Node2D" parent="." node_paths=PackedStringArray("entrance_position", "exit_position", "camera_position", "machine_ui")]
 position = Vector2(137, 91)
@@ -162,7 +162,17 @@ stretch_mode = 2
 [node name="circle_center" type="Node2D" parent="ui/outro_panel"]
 position = Vector2(2895, 1003)
 
+[node name="Button2" type="Button" parent="ui/outro_panel"]
+layout_mode = 0
+offset_left = 3753.0
+offset_top = 2159.0
+offset_right = 4153.0
+offset_bottom = 2359.0
+theme_override_font_sizes/font_size = 100
+text = "Restart"
+
 [node name="intro_panel" type="TextureRect" parent="ui"]
+visible = false
 layout_mode = 0
 offset_left = -2150.0
 offset_top = -1210.0
@@ -186,4 +196,5 @@ texture = ExtResource("5_j8fv6")
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.446, 0.446)
 
+[connection signal="pressed" from="ui/outro_panel/Button2" to="." method="Restart"]
 [connection signal="pressed" from="ui/intro_panel/Button" to="ui/intro_panel" method="hide"]

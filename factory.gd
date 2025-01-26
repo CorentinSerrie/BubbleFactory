@@ -15,12 +15,23 @@ var camera_zoom: float = 0.95
 var current_machine:int = 0
 
 var circle_edge_count : int = 100
+var initial_bubble:SS2D_Shape
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	outro_panel.visible = false
 	button.pressed.connect(OnButtonPressed)
+	initial_bubble = bubble.duplicate()
 	pass # Replace with function body.
+
+func Restart() -> void:
+	outro_panel.visible = false
+	current_machine = 0
+	bubble.queue_free()
+	bubble = initial_bubble.duplicate()
+	add_child(bubble)
+	move_child(bubble, 2)
+	
 
 func OnButtonPressed() -> void:
 	EnterMachine(current_machine)

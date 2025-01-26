@@ -172,7 +172,6 @@ theme_override_font_sizes/font_size = 100
 text = "Restart"
 
 [node name="intro_panel" type="TextureRect" parent="ui"]
-visible = false
 layout_mode = 0
 offset_left = -2150.0
 offset_top = -1210.0

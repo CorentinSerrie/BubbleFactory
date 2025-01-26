@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bax0pcpnh1j3f"]
+[gd_scene load_steps=15 format=3 uid="uid://bax0pcpnh1j3f"]
 
 [ext_resource type="Script" path="res://machine.gd" id="1_ccy0d"]
 [ext_resource type="Script" path="res://factory.gd" id="1_h41np"]
@@ -11,14 +11,19 @@
 [ext_resource type="Texture2D" uid="uid://b756mcui1ja82" path="res://assets/UI assets/Bubble_factory_endgame_UI_enviro.png" id="8_5ofum"]
 [ext_resource type="Texture2D" uid="uid://b5c2patr3dvvs" path="res://assets/Characters/Bubble_factory_endgame_UI_character.png" id="9_txvpo"]
 [ext_resource type="Texture2D" uid="uid://bhtj2tqro3asx" path="res://assets/Placeholders/Bubble_factory_startgame_UI.png" id="10_nwnh2"]
+[ext_resource type="Texture2D" uid="uid://cbyaqn320ppwj" path="res://assets/UI assets/UI_toolkit.png" id="11_asstd"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_p6sn5"]
 viewport_path = NodePath("SubViewport")
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_354c2"]
+atlas = ExtResource("11_asstd")
+region = Rect2(360, 272, 1120, 512)
+
 [node name="Factory" type="Node2D" node_paths=PackedStringArray("button", "shape_picker", "start_position", "machines", "bubble", "camera", "outro_panel", "outro_score", "circle_center", "circle_in", "circle_out", "presentation_parent")]
 script = ExtResource("1_h41np")
-button = NodePath("ui/Button")
-shape_picker = NodePath("ui/shape_picker")
+button = NodePath("ui/shape_selection/Button")
+shape_picker = NodePath("ui/shape_selection/shape_picker")
 start_position = NodePath("start_pos")
 machines = [NodePath("machine_1"), NodePath("machine_2"), NodePath("machine_3")]
 bubble = NodePath("SS2D_Shwape_Closed2")
@@ -111,25 +116,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="shape_picker" type="OptionButton" parent="ui"]
-layout_mode = 0
-offset_left = -1974.0
-offset_top = 770.0
-offset_right = -1689.0
-offset_bottom = 881.0
-theme_override_font_sizes/font_size = 80
-selected = 0
-item_count = 1
-popup/item_0/text = "first"
-
-[node name="Button" type="Button" parent="ui"]
-layout_mode = 0
-offset_left = -1993.0
-offset_top = 654.0
-offset_right = -1822.0
-offset_bottom = 718.0
-text = "Enter First Machine"
-
 [node name="machine_ui_1" parent="ui" instance=ExtResource("7_s1267")]
 
 [node name="machine_ui_2" parent="ui" instance=ExtResource("7_s1267")]
@@ -207,6 +193,60 @@ offset_right = 4153.0
 offset_bottom = 2359.0
 theme_override_font_sizes/font_size = 100
 text = "Next"
+
+[node name="shape_selection" type="TextureRect" parent="ui"]
+layout_mode = 0
+offset_left = -1472.0
+offset_top = 469.0
+offset_right = 1629.0
+offset_bottom = 1132.0
+texture = SubResource("AtlasTexture_354c2")
+
+[node name="shape_picker" type="OptionButton" parent="ui/shape_selection"]
+layout_mode = 0
+offset_left = 1419.0
+offset_top = 124.0
+offset_right = 1704.0
+offset_bottom = 242.0
+theme_override_font_sizes/font_size = 120
+selected = 0
+item_count = 1
+popup/item_0/text = "first"
+
+[node name="Button" type="Button" parent="ui/shape_selection"]
+layout_mode = 0
+offset_left = 2419.0
+offset_top = 356.0
+offset_right = 2800.0
+offset_bottom = 501.0
+text = "GO"
+
+[node name="Label" type="Label" parent="ui/shape_selection"]
+layout_mode = 0
+offset_left = 345.0
+offset_top = 87.0
+offset_right = 1045.0
+offset_bottom = 252.0
+theme_override_font_sizes/font_size = 120
+text = "Let's start with a "
+
+[node name="Label3" type="Label" parent="ui/shape_selection"]
+layout_mode = 0
+offset_left = 279.0
+offset_top = 255.0
+offset_right = 1271.0
+offset_bottom = 420.0
+theme_override_font_sizes/font_size = 120
+text = "We'll see how it goes"
+
+[node name="Label2" type="Label" parent="ui/shape_selection"]
+layout_mode = 0
+offset_left = 1805.0
+offset_top = 69.0
+offset_right = 2797.0
+offset_bottom = 234.0
+theme_override_font_sizes/font_size = 120
+text = "shaped bubble..."
 
 [node name="background" type="Sprite2D" parent="."]
 z_index = -1

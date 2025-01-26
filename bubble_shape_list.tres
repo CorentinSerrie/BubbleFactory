@@ -1,15 +1,15 @@
 [gd_resource type="Resource" load_steps=9 format=3 uid="uid://dywaxnpe75g12"]
 
-[ext_resource type="PackedScene" uid="uid://cpy4b4vl4jqcp" path="res://ma_nouvelle_bulle_trop_stylee.tscn" id="1_fm2p5"]
-[ext_resource type="PackedScene" uid="uid://x7n1t1f7qgqc" path="res://bubble_1.tscn" id="2_p34d2"]
-[ext_resource type="PackedScene" uid="uid://bg01442lniwsy" path="res://bubble_2.tscn" id="3_u07ar"]
 [ext_resource type="PackedScene" uid="uid://ckpvps60lb4ep" path="res://bubble_clover.tscn" id="4_p430b"]
 [ext_resource type="Script" path="res://bubble_shape_list.gd" id="4_uipqu"]
 [ext_resource type="PackedScene" uid="uid://uavjqxn7qfar" path="res://bubble_crown.tscn" id="5_7r30w"]
+[ext_resource type="PackedScene" uid="uid://cl4exg71e7c4d" path="res://bubble_bird.tscn" id="5_h0c1c"]
+[ext_resource type="PackedScene" uid="uid://b40gyavf33kg4" path="res://bubble_sword.tscn" id="6_6dk58"]
 [ext_resource type="PackedScene" uid="uid://dpch2l6lnt4eg" path="res://bubble_horse.tscn" id="6_44r88"]
 [ext_resource type="PackedScene" uid="uid://c8jqj84xay4fx" path="res://bubble_star.tscn" id="7_lkj7n"]
+[ext_resource type="PackedScene" uid="uid://ou3s7o03tpe7" path="res://bubble_potion.tscn" id="7_m8bwr"]
 
 [resource]
 script = ExtResource("4_uipqu")
-list = Array[Resource]([ExtResource("1_fm2p5"), ExtResource("2_p34d2"), ExtResource("3_u07ar"), ExtResource("4_p430b"), ExtResource("5_7r30w"), ExtResource("6_44r88"), ExtResource("7_lkj7n")])
-names = Array[String](["test_1", "test_2", "test_3", "clover", "crown", "horse", "star"])
+list = Array[Resource]([ExtResource("4_p430b"), ExtResource("5_7r30w"), ExtResource("6_44r88"), ExtResource("7_lkj7n"), ExtResource("5_h0c1c"), ExtResource("6_6dk58"), ExtResource("7_m8bwr")])
+names = Array[String]([" clover ", " crown ", " horse ", " star ", " bird ", " sword ", " potion "])

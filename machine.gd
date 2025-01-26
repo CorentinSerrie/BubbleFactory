@@ -14,6 +14,7 @@ extends Node2D
 
 @export var animated_shape: AnimatedSprite2D
 @export var sound: AudioStreamPlayer
+@export var particle: GPUParticles2D
 
 var is_busy : bool = false
 var current_shape : SS2D_Shape
@@ -39,6 +40,8 @@ var current_position : BubblePosition = BubblePosition.out
 var current_type : MachineType = MachineType.SQUASH_STRETCH
 
 func _ready():
+	if(particle != null):
+		particle.emitting = false
 	machine_ui.machine = self
 	machine_ui.OnBubblePositionChanged()
 	machine_ui.validate_button.pressed.connect(_OnValidatePressed)
@@ -89,6 +92,8 @@ func _ResetToEntrance(shape: SS2D_Shape) -> void:
 	tween.tween_property(shape, "global_position", inside_position.global_position, slide_duration)
 	tween.tween_callback((
 		func ():
+			if(particle != null):
+				particle.emitting = true
 			if(animated_shape != null):
 				animated_shape.play()
 			_ResetShape(shape)
@@ -96,6 +101,8 @@ func _ResetToEntrance(shape: SS2D_Shape) -> void:
 	tween.tween_interval(animation_duration)
 	tween.tween_callback(
 		func ():
+			if(particle != null):
+				particle.emitting = false
 			sound.play()
 			if(animated_shape != null):
 				animated_shape.pause()
@@ -135,6 +142,8 @@ func _ProcessShape(shape : SS2D_Shape) -> void:
 	tween.tween_callback((
 		func ():
 			sound.play()
+			if(particle != null):
+				particle.emitting = true
 			if(animated_shape != null):
 				animated_shape.play()
 			match current_type:
@@ -150,6 +159,8 @@ func _ProcessShape(shape : SS2D_Shape) -> void:
 	tween.tween_interval(animation_duration)
 	tween.tween_callback(
 		func ():
+			if(particle != null):
+				particle.emitting = false
 			if(animated_shape != null):
 				animated_shape.pause()
 				animated_shape.set_frame_and_progress(0, 0.0)

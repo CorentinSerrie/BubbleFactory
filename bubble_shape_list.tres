@@ -1,13 +1,13 @@
-[gd_resource type="Resource" load_steps=9 format=3 uid="uid://dx3am77siglv5"]
+[gd_resource type="Resource" load_steps=9 format=3 uid="uid://dywaxnpe75g12"]
 
-[ext_resource type="PackedScene" path="res://bubble_clover.tscn" id="4_p430b"]
+[ext_resource type="PackedScene" uid="uid://ckpvps60lb4ep" path="res://bubble_clover.tscn" id="4_p430b"]
 [ext_resource type="Script" path="res://bubble_shape_list.gd" id="4_uipqu"]
-[ext_resource type="PackedScene" path="res://bubble_crown.tscn" id="5_7r30w"]
-[ext_resource type="PackedScene" path="res://bubble_bird.tscn" id="5_h0c1c"]
-[ext_resource type="PackedScene" path="res://bubble_sword.tscn" id="6_6dk58"]
-[ext_resource type="PackedScene" path="res://bubble_horse.tscn" id="6_44r88"]
-[ext_resource type="PackedScene" path="res://bubble_star.tscn" id="7_lkj7n"]
-[ext_resource type="PackedScene" path="res://bubble_potion.tscn" id="7_m8bwr"]
+[ext_resource type="PackedScene" uid="uid://uavjqxn7qfar" path="res://bubble_crown.tscn" id="5_7r30w"]
+[ext_resource type="PackedScene" uid="uid://cl4exg71e7c4d" path="res://bubble_bird.tscn" id="5_h0c1c"]
+[ext_resource type="PackedScene" uid="uid://b40gyavf33kg4" path="res://bubble_sword.tscn" id="6_6dk58"]
+[ext_resource type="PackedScene" uid="uid://dpch2l6lnt4eg" path="res://bubble_horse.tscn" id="6_44r88"]
+[ext_resource type="PackedScene" uid="uid://c8jqj84xay4fx" path="res://bubble_star.tscn" id="7_lkj7n"]
+[ext_resource type="PackedScene" uid="uid://ou3s7o03tpe7" path="res://bubble_potion.tscn" id="7_m8bwr"]
 
 [resource]
 script = ExtResource("4_uipqu")

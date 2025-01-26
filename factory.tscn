@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://bax0pcpnh1j3f"]
+[gd_scene load_steps=55 format=3 uid="uid://bax0pcpnh1j3f"]
 
 [ext_resource type="Script" path="res://machine.gd" id="1_ccy0d"]
 [ext_resource type="Script" path="res://factory.gd" id="1_h41np"]
@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://b5c2patr3dvvs" path="res://assets/Characters/Bubble_factory_endgame_UI_character.png" id="9_txvpo"]
 [ext_resource type="Texture2D" uid="uid://c1xs6d5vesi1c" path="res://assets/Background/JAM_01_flou.jpg" id="9_v71cr"]
 [ext_resource type="Texture2D" uid="uid://dux6t50owq3qf" path="res://assets/UI assets/ppt_presentation_without_background.png" id="10_ivp1d"]
-[ext_resource type="Texture2D" path="res://assets/UI assets/new_atlas_texture.tres" id="11_ysgh4"]
+[ext_resource type="Texture2D" uid="uid://cchbhuhu8pvhw" path="res://assets/UI assets/new_atlas_texture.tres" id="11_ysgh4"]
 [ext_resource type="Theme" uid="uid://b0esmft70vicl" path="res://assets/UI assets/basic_theme.tres" id="12_oixl1"]
 [ext_resource type="Texture2D" uid="uid://bfwl5cg0mkfos" path="res://assets/UI assets/UI_toolkit_2_without_background.png" id="12_x3nxg"]
 [ext_resource type="Texture2D" uid="uid://ntjly63v4fui" path="res://assets/UI assets/UI_toolkit_text_buttons_no_bg.png" id="13_lgq16"]
@@ -36,6 +36,7 @@
 [ext_resource type="AudioStream" uid="uid://dy4v8kipx7xq4" path="res://assets/SFX/intro_scene.mp3" id="33_rm1sn"]
 [ext_resource type="AudioStream" uid="uid://blktoc0hu7ot6" path="res://assets/SFX/intro_transition.mp3" id="34_rjgla"]
 [ext_resource type="AudioStream" uid="uid://fy5hl488h5sl" path="res://assets/SFX/sorcerer_action.mp3" id="35_64gkw"]
+[ext_resource type="Texture2D" uid="uid://cxckuswy1vjac" path="res://assets/UI assets/particle.png" id="37_2n3pl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8seab"]
 atlas = ExtResource("2_ipewm")
@@ -133,6 +134,29 @@ region = Rect2(358, 278, 1109, 492)
 atlas = ExtResource("13_lgq16")
 region = Rect2(1750, 278, 1109, 492)
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8di4d"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 31.2
+angle_min = -186.8
+angle_max = 247.7
+inherit_velocity_ratio = 0.82
+direction = Vector3(0, -1, 0)
+spread = 57.134
+initial_velocity_min = 53.76
+initial_velocity_max = 107.52
+angular_velocity_min = -178.06
+angular_velocity_max = -46.45
+orbit_velocity_min = 0.0650001
+orbit_velocity_max = 0.0650001
+radial_velocity_min = 10.75
+radial_velocity_max = 86.02
+gravity = Vector3(0, 120, 0)
+linear_accel_min = 26.88
+linear_accel_max = 26.88
+scale_min = 0.8
+scale_max = 1.2
+
 [node name="Factory" type="Node2D" node_paths=PackedStringArray("button", "shape_picker", "shape_picker_container", "start_position", "machines", "bubble", "camera", "outro_panel", "outro_score", "circle_center", "circle_in", "circle_out", "presentation_parent", "end_sound")]
 script = ExtResource("1_h41np")
 button = NodePath("ui/shape_selection/Go button")
@@ -215,7 +239,7 @@ texture = ExtResource("2_l52c2")
 [node name="camera_position" type="Node2D" parent="machine_2"]
 position = Vector2(0, -143)
 
-[node name="machine_3" type="Node2D" parent="." node_paths=PackedStringArray("entrance_position", "exit_position", "inside_position", "camera_position", "machine_ui", "animated_shape", "sound")]
+[node name="machine_3" type="Node2D" parent="." node_paths=PackedStringArray("entrance_position", "exit_position", "inside_position", "camera_position", "machine_ui", "animated_shape", "sound", "particle")]
 position = Vector2(1169, 101)
 script = ExtResource("1_ccy0d")
 entrance_position = NodePath("entrance")
@@ -226,6 +250,7 @@ machine_ui = NodePath("../ui/machine_ui_3")
 animation_duration = 1.8
 animated_shape = NodePath("../witch")
 sound = NodePath("../sorcerer_action")
+particle = NodePath("../Machine_particle")
 
 [node name="entrance" type="Node2D" parent="machine_3"]
 position = Vector2(-611, -15)
@@ -642,6 +667,14 @@ stream = ExtResource("34_rjgla")
 
 [node name="sorcerer_action" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("35_64gkw")
+
+[node name="Machine_particle" type="GPUParticles2D" parent="."]
+position = Vector2(1148, 92)
+amount = 3
+amount_ratio = 0.3773
+process_material = SubResource("ParticleProcessMaterial_8di4d")
+texture = ExtResource("37_2n3pl")
+collision_base_size = 0.0
 
 [connection signal="pressed" from="ui/outro_panel/Button2" to="." method="Restart"]
 [connection signal="pressed" from="ui/shape_selection/Go button" to="ui/shape_selection/Go button" method="_on_pressed"]

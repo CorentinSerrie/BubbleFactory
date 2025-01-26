@@ -12,13 +12,14 @@
 [ext_resource type="Texture2D" uid="uid://b5c2patr3dvvs" path="res://assets/Characters/Bubble_factory_endgame_UI_character.png" id="9_txvpo"]
 [ext_resource type="Texture2D" uid="uid://bhtj2tqro3asx" path="res://assets/Placeholders/Bubble_factory_startgame_UI.png" id="10_nwnh2"]
 
-[node name="Factory" type="Node2D" node_paths=PackedStringArray("button", "machines", "bubble", "camera", "outro_panel", "circle_center", "circle_in", "circle_out")]
+[node name="Factory" type="Node2D" node_paths=PackedStringArray("button", "machines", "bubble", "camera", "outro_panel", "outro_score", "circle_center", "circle_in", "circle_out")]
 script = ExtResource("1_h41np")
 button = NodePath("ui/Button")
 machines = [NodePath("machine_1"), NodePath("machine_2"), NodePath("machine_3")]
 bubble = NodePath("SS2D_Shwape_Closed2")
 camera = NodePath("Camera2D")
 outro_panel = NodePath("ui/outro_panel")
+outro_score = NodePath("ui/outro_panel/score")
 circle_center = NodePath("ui/outro_panel/circle_center")
 circle_in = NodePath("ui/outro_panel/circle_in")
 circle_out = NodePath("ui/outro_panel/circle_out")
@@ -32,17 +33,17 @@ position = Vector2(167, -386)
 texture = ExtResource("6_ibmwj")
 
 [node name="SS2D_Shwape_Closed2" parent="." instance=ExtResource("2_qchq2")]
-position = Vector2(-1635, -322)
+position = Vector2(-2817, -285)
 
 [node name="machine_1" type="Node2D" parent="." node_paths=PackedStringArray("entrance_position", "exit_position", "camera_position", "machine_ui")]
 position = Vector2(-927, 83)
 script = ExtResource("1_ccy0d")
-slide_duration = null
-bubble_max_size = null
 entrance_position = NodePath("entrance")
 exit_position = NodePath("exit")
 camera_position = NodePath(".")
 machine_ui = NodePath("../ui/machine_ui_1")
+slide_duration = null
+bubble_max_size = null
 
 [node name="entrance" type="Node2D" parent="machine_1"]
 position = Vector2(-611, -15)
@@ -59,12 +60,12 @@ texture = ExtResource("2_l52c2")
 [node name="machine_2" type="Node2D" parent="." node_paths=PackedStringArray("entrance_position", "exit_position", "camera_position", "machine_ui")]
 position = Vector2(137, 91)
 script = ExtResource("1_ccy0d")
-slide_duration = null
-bubble_max_size = null
 entrance_position = NodePath("entrance")
 exit_position = NodePath("exit")
 camera_position = NodePath(".")
 machine_ui = NodePath("../ui/machine_ui_2")
+slide_duration = null
+bubble_max_size = null
 
 [node name="entrance" type="Node2D" parent="machine_2"]
 position = Vector2(-611, -15)
@@ -81,12 +82,12 @@ texture = ExtResource("2_l52c2")
 [node name="machine_3" type="Node2D" parent="." node_paths=PackedStringArray("entrance_position", "exit_position", "camera_position", "machine_ui")]
 position = Vector2(1169, 101)
 script = ExtResource("1_ccy0d")
-slide_duration = null
-bubble_max_size = null
 entrance_position = NodePath("entrance")
 exit_position = NodePath("exit")
 camera_position = NodePath(".")
 machine_ui = NodePath("../ui/machine_ui_3")
+slide_duration = null
+bubble_max_size = null
 
 [node name="entrance" type="Node2D" parent="machine_3"]
 position = Vector2(-611, -15)
@@ -170,6 +171,15 @@ offset_right = 4153.0
 offset_bottom = 2359.0
 theme_override_font_sizes/font_size = 100
 text = "Restart"
+
+[node name="score" type="Label" parent="ui/outro_panel"]
+layout_mode = 0
+offset_left = 2602.0
+offset_top = 1432.0
+offset_right = 3219.0
+offset_bottom = 1597.0
+theme_override_font_sizes/font_size = 120
+text = "score: 50%"
 
 [node name="intro_panel" type="TextureRect" parent="ui"]
 layout_mode = 0

@@ -7,5 +7,5 @@
 main menu
 	proper ui transitions/locks
 	
-scoring computation
-migrate entirely to tesselation
+	scoring computation
+error -> redo only

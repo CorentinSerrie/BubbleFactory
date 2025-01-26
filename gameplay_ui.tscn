@@ -1,0 +1,102 @@
+[gd_scene load_steps=13 format=3 uid="uid://bgg16kv6o715j"]
+
+[ext_resource type="Theme" uid="uid://b0esmft70vicl" path="res://assets/UI assets/basic_theme.tres" id="1_mcy5l"]
+[ext_resource type="Texture2D" uid="uid://ntjly63v4fui" path="res://assets/UI assets/UI_toolkit_text_buttons_no_bg.png" id="2_vii7r"]
+[ext_resource type="Script" path="res://basic_button.gd" id="3_ca2uj"]
+[ext_resource type="AudioStream" uid="uid://c074rln1a4rsf" path="res://assets/Placeholders/click-234708.mp3" id="4_wn1e0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wvbbj"]
+atlas = ExtResource("2_vii7r")
+region = Rect2(358, 278, 1109, 492)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_crpwj"]
+atlas = ExtResource("2_vii7r")
+region = Rect2(1750, 278, 1109, 492)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hjtuf"]
+atlas = ExtResource("2_vii7r")
+region = Rect2(352, 891, 1109, 492)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tdp50"]
+atlas = ExtResource("2_vii7r")
+region = Rect2(1744, 891, 1109, 492)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lg4fj"]
+atlas = ExtResource("2_vii7r")
+region = Rect2(337, 1477, 1109, 492)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p3i7d"]
+atlas = ExtResource("2_vii7r")
+region = Rect2(1729, 1477, 1109, 492)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lsqlj"]
+atlas = ExtResource("2_vii7r")
+region = Rect2(341, 2075, 1109, 492)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bijki"]
+atlas = ExtResource("2_vii7r")
+region = Rect2(1733, 2075, 1109, 492)
+
+[node name="Gameplay UI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+theme = ExtResource("1_mcy5l")
+
+[node name="Go button" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 264.0
+offset_bottom = 152.0
+theme = ExtResource("1_mcy5l")
+action_mode = 0
+keep_pressed_outside = true
+texture_normal = SubResource("AtlasTexture_wvbbj")
+texture_pressed = SubResource("AtlasTexture_crpwj")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("3_ca2uj")
+
+[node name="Start button" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 192.0
+offset_right = 264.0
+offset_bottom = 280.0
+texture_normal = SubResource("AtlasTexture_hjtuf")
+texture_pressed = SubResource("AtlasTexture_tdp50")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("3_ca2uj")
+
+[node name="Reset button" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 320.0
+offset_right = 264.0
+offset_bottom = 408.0
+texture_normal = SubResource("AtlasTexture_lg4fj")
+texture_pressed = SubResource("AtlasTexture_p3i7d")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("3_ca2uj")
+
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 448.0
+offset_right = 264.0
+offset_bottom = 536.0
+texture_normal = SubResource("AtlasTexture_lsqlj")
+texture_pressed = SubResource("AtlasTexture_bijki")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("3_ca2uj")
+
+[node name="Click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_wn1e0")
+
+[connection signal="pressed" from="Go button" to="Go button" method="_on_pressed"]
+[connection signal="pressed" from="Start button" to="Start button" method="_on_pressed"]
+[connection signal="pressed" from="Reset button" to="Reset button" method="_on_pressed"]
+[connection signal="pressed" from="TextureButton" to="TextureButton" method="_on_pressed"]

@@ -1,0 +1,8 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://b0esmft70vicl"]
+
+[ext_resource type="FontFile" uid="uid://bammjxppl7tbg" path="res://assets/UI assets/Enchant.otf" id="1_rmjfe"]
+
+[resource]
+default_font = ExtResource("1_rmjfe")
+Button/styles/normal = null
+Button/styles/pressed = null

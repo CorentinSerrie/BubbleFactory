@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://bax0pcpnh1j3f"]
+[gd_scene load_steps=56 format=3 uid="uid://bax0pcpnh1j3f"]
 
 [ext_resource type="Script" path="res://machine.gd" id="1_ccy0d"]
 [ext_resource type="Script" path="res://factory.gd" id="1_h41np"]
@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://b5c2patr3dvvs" path="res://assets/Characters/Bubble_factory_endgame_UI_character.png" id="9_txvpo"]
 [ext_resource type="Texture2D" uid="uid://c1xs6d5vesi1c" path="res://assets/Background/JAM_01_flou.jpg" id="9_v71cr"]
 [ext_resource type="Texture2D" uid="uid://dux6t50owq3qf" path="res://assets/UI assets/ppt_presentation_without_background.png" id="10_ivp1d"]
-[ext_resource type="Texture2D" uid="uid://bscs7wd0ya8jp" path="res://assets/UI assets/new_atlas_texture.tres" id="11_ysgh4"]
+[ext_resource type="Texture2D" uid="uid://cchbhuhu8pvhw" path="res://assets/UI assets/new_atlas_texture.tres" id="11_ysgh4"]
 [ext_resource type="Theme" uid="uid://b0esmft70vicl" path="res://assets/UI assets/basic_theme.tres" id="12_oixl1"]
 [ext_resource type="Texture2D" uid="uid://bfwl5cg0mkfos" path="res://assets/UI assets/UI_toolkit_2_without_background.png" id="12_x3nxg"]
 [ext_resource type="Texture2D" uid="uid://ntjly63v4fui" path="res://assets/UI assets/UI_toolkit_text_buttons_no_bg.png" id="13_lgq16"]
@@ -37,6 +37,7 @@
 [ext_resource type="AudioStream" uid="uid://blktoc0hu7ot6" path="res://assets/SFX/intro_transition.mp3" id="34_rjgla"]
 [ext_resource type="AudioStream" uid="uid://fy5hl488h5sl" path="res://assets/SFX/sorcerer_action.mp3" id="35_64gkw"]
 [ext_resource type="Texture2D" uid="uid://cxckuswy1vjac" path="res://assets/UI assets/particle.png" id="37_2n3pl"]
+[ext_resource type="AudioStream" uid="uid://tvq8d0uvt38a" path="res://assets/SFX/Jam.mp3" id="37_vla03"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8seab"]
 atlas = ExtResource("2_ipewm")
@@ -370,7 +371,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 180
 text = "50.09%"
 
-[node name="intro_panel" type="TextureRect" parent="ui" node_paths=PackedStringArray("bubble_1", "bubble_2", "bubble_3", "bubble_4", "transition_screen", "next_button", "intro_sound", "transition_sound")]
+[node name="intro_panel" type="TextureRect" parent="ui" node_paths=PackedStringArray("bubble_1", "bubble_2", "bubble_3", "bubble_4", "transition_screen", "next_button", "intro_sound", "transition_sound", "music")]
 z_index = 1
 layout_mode = 0
 offset_left = -2150.0
@@ -388,6 +389,7 @@ next_button = NodePath("Button")
 delay = 3.0
 intro_sound = NodePath("../../intro_scene")
 transition_sound = NodePath("../../intro_transition")
+music = NodePath("../../music")
 
 [node name="TextureRect" type="TextureRect" parent="ui/intro_panel"]
 layout_mode = 1
@@ -667,6 +669,10 @@ stream = ExtResource("34_rjgla")
 
 [node name="sorcerer_action" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("35_64gkw")
+
+[node name="music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("37_vla03")
+parameters/looping = true
 
 [node name="Machine_particle" type="GPUParticles2D" parent="."]
 position = Vector2(1148, 92)

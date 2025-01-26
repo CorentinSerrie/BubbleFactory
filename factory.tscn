@@ -32,10 +32,11 @@ region = Rect2(358, 278, 1109, 492)
 atlas = ExtResource("13_lgq16")
 region = Rect2(1750, 278, 1109, 492)
 
-[node name="Factory" type="Node2D" node_paths=PackedStringArray("button", "shape_picker", "start_position", "machines", "bubble", "camera", "outro_panel", "outro_score", "circle_center", "circle_in", "circle_out", "presentation_parent")]
+[node name="Factory" type="Node2D" node_paths=PackedStringArray("button", "shape_picker", "shape_picker_container", "start_position", "machines", "bubble", "camera", "outro_panel", "outro_score", "circle_center", "circle_in", "circle_out", "presentation_parent")]
 script = ExtResource("1_h41np")
 button = NodePath("ui/shape_selection/Go button")
 shape_picker = NodePath("ui/shape_selection/VBoxContainer/HBoxContainer/shape_picker")
+shape_picker_container = NodePath("ui/shape_selection")
 start_position = NodePath("start_pos")
 machines = [NodePath("machine_1"), NodePath("machine_2"), NodePath("machine_3")]
 bubble = NodePath("SS2D_Shwape_Closed2")

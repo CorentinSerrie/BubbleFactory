@@ -2,6 +2,7 @@ extends Node2D
 
 @export var button : BaseButton
 @export var shape_picker : OptionButton
+@export var shape_picker_container: Control
 @export var start_position : Node2D
 @export var machines : Array[BubbleMachine]
 @export var bubble: SS2D_Shape
@@ -30,6 +31,7 @@ var initial_polygon_point_out: PackedVector2Array
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	outro_panel.visible = false
+	shape_picker_container.visible = true
 	button.pressed.connect(OnButtonPressed)
 
 	bubble.queue_free()
@@ -38,6 +40,7 @@ func _ready() -> void:
 
 func Restart() -> void:
 	outro_panel.visible = false
+	shape_picker_container.visible = true
 	current_machine = 0
 	_ResetShape(bubble)
 
@@ -79,6 +82,7 @@ func _ResetShape(shape: SS2D_Shape) -> void:
 		point.point_out = initial_polygon_point_out[i]
 
 func OnButtonPressed() -> void:
+	shape_picker_container.visible = false
 	_StartWithShape(shape_picker.selected)
 	EnterMachine(current_machine)
 

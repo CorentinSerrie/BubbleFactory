@@ -39,7 +39,7 @@ position = Vector2(167, -386)
 texture = ExtResource("6_ibmwj")
 
 [node name="SS2D_Shwape_Closed2" parent="." instance=ExtResource("2_qchq2")]
-position = Vector2(-2817, -285)
+position = Vector2(-1359, 107)
 
 [node name="machine_1" type="Node2D" parent="." node_paths=PackedStringArray("entrance_position", "exit_position", "camera_position", "machine_ui")]
 position = Vector2(-927, 83)

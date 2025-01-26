@@ -10,6 +10,10 @@ extends Control
 @export var ravioli_slider: Slider
 @export var ravioli_label: Label
 @export var type_option: OptionButton
+@export var star_angle_slider: Slider
+@export var star_angle_label: Label
+@export var star_strength_slider: Slider
+@export var star_strength_label: Label
 
 var machine: BubbleMachine
 
@@ -35,7 +39,9 @@ func _ready():
 		func(value): 
 			machine.current_type = value
 			OnMachineTypeChanged()
-	)
+	)	
+	star_strength_slider.value_changed.connect(func(value): star_strength_label.text = "strength: " + str(value))
+	star_angle_slider.value_changed.connect(func(value): star_angle_label.text = "angle: " + str(value))
 	pass
 
 func OnBubblePositionChanged() -> void:
@@ -70,6 +76,10 @@ func OnMachineTypeChanged() -> void:
 			angle_label.visible = true
 			ravioli_slider.visible = false
 			ravioli_label.visible = false
+			star_angle_slider.visible = false
+			star_angle_label.visible = false
+			star_strength_slider.visible = false
+			star_strength_label.visible = false
 			pass
 		MachineType.RAVIOLI:
 			strenght_slider.visible = false
@@ -78,6 +88,10 @@ func OnMachineTypeChanged() -> void:
 			angle_label.visible = false
 			ravioli_slider.visible = true
 			ravioli_label.visible = true
+			star_angle_slider.visible = false
+			star_angle_label.visible = false
+			star_strength_slider.visible = false
+			star_strength_label.visible = false
 		MachineType.STAR:
 			strenght_slider.visible = false
 			angle_slider.visible = false
@@ -85,6 +99,10 @@ func OnMachineTypeChanged() -> void:
 			angle_label.visible = false
 			ravioli_slider.visible = false
 			ravioli_label.visible = false
+			star_angle_slider.visible = true
+			star_angle_label.visible = true
+			star_strength_slider.visible = true
+			star_strength_label.visible = true
 			pass
 
 	pass
@@ -99,3 +117,7 @@ func _HideAll() -> void:
 	angle_label.visible = false
 	ravioli_slider.visible = false
 	ravioli_label.visible = false
+	star_angle_slider.visible = false
+	star_angle_label.visible = false
+	star_strength_slider.visible = false
+	star_strength_label.visible = false

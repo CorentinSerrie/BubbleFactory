@@ -91,6 +91,8 @@ func _ProcessShape(shape : SS2D_Shape, reset: bool = false) -> void:
 					_SquashStretch(shape, machine_ui.angle_slider.value, machine_ui.strenght_slider.value)
 				MachineType.RAVIOLI:
 					_Ravioli(shape, 0, machine_ui.ravioli_slider.value)
+				MachineType.STAR:
+					_StarShape(shape,  machine_ui.star_angle_slider.value, machine_ui.star_strength_slider.value)
 				_:
 					pass
 	))
@@ -173,6 +175,35 @@ func _Ravioli(shape: SS2D_Shape, angle: float, strength: float) -> void:
 
 		print("projX: " +str(proj_x)+ ", projy: " + str(proj_y) + ", val_x: " + str(val_x))
 		point.position = center + val_x * angle_vector_x + proj_y * angle_vector_y
+
+	_CenterShape(shape)
+	_ConstraintShape(shape)
+	return
+
+# angle : degrees [0,360[
+# strength : ]-1,1[, 0: nothing, 1 : multiply angles by 2
+func _StarShape(shape: SS2D_Shape, angle: float, strength: float) -> void:
+	print("star, angle: " +str(angle)+ ", strength: " + str(strength))
+	var center : Vector2 = _FindShapeCenter(shape)
+
+	for i in shape._points._points:
+		var point = shape._points._points[i]
+		var angle_vector_x : Vector2 = Vector2.from_angle(deg_to_rad(angle))
+		var angle_vector_y : Vector2 = angle_vector_x.rotated(PI/2)
+
+		var delta_pos : Vector2 = point.position - center
+		var proj_x : float = delta_pos.dot(angle_vector_x)
+		var proj_y : float = delta_pos.dot(angle_vector_y)
+
+		var angle_to_x = angle_vector_x.angle_to(delta_pos)
+
+		var sin_plus = (1 + sin(4 * angle_to_x))/2
+		
+		"var angle_modulo = fmod(angle_to_x, PI/2)
+		var angle_minus_pi2 = angle_modulo - PI/4
+		var result = abs(angle_minus_pi2)/(PI/4)"
+		delta_pos += delta_pos * sin_plus * strength
+		point.position = center + delta_pos
 
 	_CenterShape(shape)
 	_ConstraintShape(shape)

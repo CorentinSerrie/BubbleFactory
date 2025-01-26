@@ -158,7 +158,7 @@ tick_count = 1
 ticks_on_borders = true
 
 [node name="Machine_particle" type="GPUParticles2D" parent="."]
-position = Vector2(415, 229)
+position = Vector2(415, 272)
 amount = 3
 amount_ratio = 0.3773
 process_material = SubResource("ParticleProcessMaterial_ssav1")

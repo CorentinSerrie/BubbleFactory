@@ -155,11 +155,13 @@ func _CenterShape(shape: SS2D_Shape) -> void:
 func _FindShapeCenter(shape: SS2D_Shape) -> Vector2:
 	var center: Vector2 = Vector2.ZERO
 	
-	for k in range(0, shape._points._point_order.size()-1):
-		var a:int = shape._points._point_order[k]
-		var b:int = shape._points._point_order[k+1]
-		center.x += (shape._points._points[a].position.x + shape._points._points[b].position.x)*(shape._points._points[a].position.x * shape._points._points[b].position.y - (shape._points._points[b].position.x * shape._points._points[a].position.y))
-		center.y += (shape._points._points[a].position.y + shape._points._points[b].position.y)*(shape._points._points[a].position.x * shape._points._points[b].position.y - (shape._points._points[b].position.x * shape._points._points[a].position.y))
+	var tessellated_array: PackedVector2Array = shape.get_point_array().get_tessellated_points()
+
+	for k in range(0, tessellated_array.size()-1):
+		var point_k: Vector2 = tessellated_array[k]
+		var point_k_1: Vector2 = tessellated_array[k+1]
+		center.x += (point_k.x + point_k_1.x)*(point_k.x * point_k_1.y - (point_k_1.x * point_k.y))
+		center.y += (point_k.y + point_k_1.y)*(point_k.x * point_k_1.y - (point_k_1.x * point_k.y))	
 
 	center.x = center.x / (6*_GetShapeArea(shape))
 	center.y = center.y / (6*_GetShapeArea(shape))
@@ -168,10 +170,12 @@ func _FindShapeCenter(shape: SS2D_Shape) -> Vector2:
 func _GetShapeArea(shape: SS2D_Shape) -> float:
 	var area: float = 0
 	
-	for k in range(0, shape._points._point_order.size()-1):
-		var a:int = shape._points._point_order[k]
-		var b:int = shape._points._point_order[k+1]
-		area += shape._points._points[a].position.x * shape._points._points[b].position.y - shape._points._points[b].position.x * shape._points._points[a].position.y
+	var tessellated_array: PackedVector2Array = shape.get_point_array().get_tessellated_points()
+
+	for k in range(0, tessellated_array.size()-1):
+		var point_k: Vector2 = tessellated_array[k]
+		var point_k_1: Vector2 = tessellated_array[k+1]
+		area += point_k.x * point_k_1.y - point_k_1.x * point_k.y
 	return area/2
 
 func _SaveInitialShape(shape: SS2D_Shape) -> void:

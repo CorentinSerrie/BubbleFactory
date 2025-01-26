@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bax0pcpnh1j3f"]
+[gd_scene load_steps=12 format=3 uid="uid://bax0pcpnh1j3f"]
 
 [ext_resource type="Script" path="res://machine.gd" id="1_ccy0d"]
 [ext_resource type="Script" path="res://factory.gd" id="1_h41np"]
@@ -8,24 +8,33 @@
 [ext_resource type="Texture2D" uid="uid://bxm3226v6vjsn" path="res://assets/Placeholders/JAM_Croquis.jpg" id="5_j8fv6"]
 [ext_resource type="Texture2D" uid="uid://oe6h2sj7cpre" path="res://assets/Placeholders/entity.png" id="6_ibmwj"]
 [ext_resource type="PackedScene" uid="uid://coa36m2fmcf08" path="res://machine_ui.tscn" id="7_s1267"]
+[ext_resource type="Texture2D" uid="uid://b756mcui1ja82" path="res://assets/UI assets/Bubble_factory_endgame_UI_enviro.png" id="8_5ofum"]
+[ext_resource type="Texture2D" uid="uid://b5c2patr3dvvs" path="res://assets/Characters/Bubble_factory_endgame_UI_character.png" id="9_txvpo"]
+[ext_resource type="Texture2D" uid="uid://bhtj2tqro3asx" path="res://assets/Placeholders/Bubble_factory_startgame_UI.png" id="10_nwnh2"]
 
-[node name="Factory" type="Node2D" node_paths=PackedStringArray("button", "machines", "bubble", "camera")]
+[node name="Factory" type="Node2D" node_paths=PackedStringArray("button", "machines", "bubble", "camera", "outro_panel", "circle_center", "circle_in", "circle_out")]
 script = ExtResource("1_h41np")
 button = NodePath("ui/Button")
 machines = [NodePath("machine_1"), NodePath("machine_2"), NodePath("machine_3")]
-bubble = NodePath("SS2D_Shape_Closed2")
+bubble = NodePath("SS2D_Shwape_Closed2")
 camera = NodePath("Camera2D")
+outro_panel = NodePath("ui/outro_panel")
+circle_center = NodePath("ui/outro_panel/circle_center")
+circle_in = NodePath("ui/outro_panel/circle_in")
+circle_out = NodePath("ui/outro_panel/circle_out")
 
 [node name="Fishman" type="Sprite2D" parent="."]
 position = Vector2(-948, -380)
 texture = ExtResource("2_n4ilt")
 
-[node name="SS2D_Shape_Closed2" parent="." instance=ExtResource("2_qchq2")]
-position = Vector2(-1949, 41)
+[node name="SS2D_Shwape_Closed2" parent="." instance=ExtResource("2_qchq2")]
+position = Vector2(-1635, -322)
 
 [node name="machine_1" type="Node2D" parent="." node_paths=PackedStringArray("entrance_position", "exit_position", "camera_position", "machine_ui")]
 position = Vector2(-927, 83)
 script = ExtResource("1_ccy0d")
+slide_duration = null
+bubble_max_size = null
 entrance_position = NodePath("entrance")
 exit_position = NodePath("exit")
 camera_position = NodePath(".")
@@ -50,6 +59,8 @@ texture = ExtResource("6_ibmwj")
 [node name="machine_2" type="Node2D" parent="." node_paths=PackedStringArray("entrance_position", "exit_position", "camera_position", "machine_ui")]
 position = Vector2(137, 91)
 script = ExtResource("1_ccy0d")
+slide_duration = null
+bubble_max_size = null
 entrance_position = NodePath("entrance")
 exit_position = NodePath("exit")
 camera_position = NodePath(".")
@@ -70,6 +81,8 @@ texture = ExtResource("2_l52c2")
 [node name="machine_3" type="Node2D" parent="." node_paths=PackedStringArray("entrance_position", "exit_position", "camera_position", "machine_ui")]
 position = Vector2(1169, 101)
 script = ExtResource("1_ccy0d")
+slide_duration = null
+bubble_max_size = null
 entrance_position = NodePath("entrance")
 exit_position = NodePath("exit")
 camera_position = NodePath(".")
@@ -113,7 +126,58 @@ offset_bottom = 21.0
 
 [node name="machine_ui_3" parent="ui" instance=ExtResource("7_s1267")]
 offset_left = 2136.0
+offset_top = -15.0
 offset_right = 2176.0
+offset_bottom = 25.0
+
+[node name="outro_panel" type="TextureRect" parent="ui"]
+layout_mode = 0
+offset_left = -2150.0
+offset_top = -1210.0
+offset_right = 2150.0
+offset_bottom = 1210.0
+texture = ExtResource("8_5ofum")
+
+[node name="circle_in" type="Polygon2D" parent="ui/outro_panel"]
+position = Vector2(-6138, 1076)
+color = Color(0.141176, 1, 0.223529, 1)
+polygon = PackedVector2Array(-185.553, -69.7339, -160.808, -96.0146, -132.653, -120.878, -96.4444, -146.458, -54.0331, -167.428, -31.0798, -174.52, -7.27, -178.464, 17.1651, -178.593, 41.994, -174.241, 66.9853, -164.744, 91.9078, -149.435, 94.7241, -128.864, 99.5959, -109.834, 114.271, -76.2753, 133.465, -48.5253, 154.706, -26.3482, 193.455, 2.22813, 210.762, 11.3354, 104.767, 110.387, -174.366, 118.41, -185.553, -69.7339)
+
+[node name="circle_out" type="Polygon2D" parent="ui/outro_panel"]
+modulate = Color(1, 0.521569, 1, 1)
+clip_children = 1
+position = Vector2(-1751, 572)
+polygon = PackedVector2Array(182.01, 0, 181.651, 11.4285, 180.575, 22.8119, 178.786, 34.1053, 176.292, 45.2641, 173.102, 56.2443, 169.229, 67.0024, 164.688, 77.4962, 159.497, 87.6841, 153.676, 97.526, 147.249, 106.983, 140.241, 116.018, 132.68, 124.595, 124.595, 132.68, 116.018, 140.241, 106.983, 147.249, 97.526, 153.676, 87.6841, 159.497, 77.4962, 164.688, 67.0024, 169.229, 56.2443, 173.102, 45.2641, 176.292, 34.1053, 178.786, 22.8119, 180.575, 11.4285, 181.651, -7.95592e-06, 182.01, -11.4285, 181.651, -22.8119, 180.575, -34.1053, 178.786, -45.2641, 176.292, -56.2443, 173.102, -67.0024, 169.229, -77.4962, 164.688, -87.6841, 159.497, -97.526, 153.676, -106.983, 147.249, -116.018, 140.241, -124.595, 132.68, -132.68, 124.595, -140.241, 116.018, -147.249, 106.983, -153.676, 97.526, -159.497, 87.6841, -164.688, 77.4962, -169.229, 67.0024, -173.102, 56.2443, -176.292, 45.2641, -178.786, 34.1053, -180.575, 22.8119, -181.651, 11.4285, -182.01, -1.59118e-05, -181.651, -11.4285, -180.575, -22.8119, -178.786, -34.1053, -176.292, -45.2641, -173.102, -56.2443, -169.229, -67.0024, -164.688, -77.4962, -159.497, -87.6841, -153.676, -97.526, -147.249, -106.983, -140.241, -116.018, -132.68, -124.595, -124.595, -132.68, -116.018, -140.241, -106.983, -147.249, -97.526, -153.676, -87.6841, -159.497, -77.4962, -164.688, -67.0025, -169.229, -56.2443, -173.102, -45.2641, -176.292, -34.1053, -178.786, -22.8119, -180.575, -11.4285, -181.651, 2.17045e-06, -182.01, 11.4285, -181.651, 22.8119, -180.575, 34.1053, -178.786, 45.2641, -176.292, 56.2443, -173.102, 67.0025, -169.229, 77.4962, -164.688, 87.6841, -159.497, 97.5259, -153.676, 106.983, -147.249, 116.018, -140.241, 124.595, -132.68, 132.68, -124.595, 140.241, -116.018, 147.249, -106.983, 153.676, -97.526, 159.497, -87.6841, 164.688, -77.4962, 169.229, -67.0024, 173.102, -56.2442, 176.292, -45.2641, 178.786, -34.1053, 180.575, -22.8119, 181.651, -11.4285, 182.01, 3.18237e-05, 5000, 5000, 5000, -5000, -5000, -5000, -5000, 5000, 5000, 5000)
+
+[node name="TextureRect2" type="TextureRect" parent="ui/outro_panel"]
+layout_mode = 0
+offset_left = -50.0
+offset_top = -200.0
+offset_right = 1870.0
+offset_bottom = 1134.0
+scale = Vector2(2.08, 2.08)
+texture = ExtResource("9_txvpo")
+stretch_mode = 2
+
+[node name="circle_center" type="Node2D" parent="ui/outro_panel"]
+position = Vector2(2895, 1003)
+
+[node name="intro_panel" type="TextureRect" parent="ui"]
+layout_mode = 0
+offset_left = -2150.0
+offset_top = -1210.0
+offset_right = 2150.0
+offset_bottom = 1210.0
+texture = ExtResource("10_nwnh2")
+
+[node name="Button" type="Button" parent="ui/intro_panel"]
+layout_mode = 0
+offset_left = 3753.0
+offset_top = 2159.0
+offset_right = 4153.0
+offset_bottom = 2359.0
+theme_override_font_sizes/font_size = 100
+text = "Next"
 
 [node name="background" type="Sprite2D" parent="."]
 z_index = -1
@@ -121,3 +185,5 @@ texture = ExtResource("5_j8fv6")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.446, 0.446)
+
+[connection signal="pressed" from="ui/intro_panel/Button" to="ui/intro_panel" method="hide"]

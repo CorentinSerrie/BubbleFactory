@@ -19,20 +19,20 @@ width = 1.0
 
 [sub_resource type="Resource" id="Resource_2cno5"]
 script = ExtResource("3_urtqa")
-position = Vector2(-133.154, -209.35)
+position = Vector2(-199.109, -91.4598)
 point_in = Vector2(0, 0)
 point_out = Vector2(0, 0)
 properties = SubResource("Resource_u4rvs")
 
 [sub_resource type="Resource" id="Resource_xkn1p"]
 script = ExtResource("2_ljya7")
-texture_idx = 0
+texture_idx = 2
 flip = false
 width = 1.0
 
 [sub_resource type="Resource" id="Resource_4wrxp"]
 script = ExtResource("3_urtqa")
-position = Vector2(113.032, -7.05193)
+position = Vector2(97.9889, 99.5244)
 point_in = Vector2(0, 0)
 point_out = Vector2(0, 0)
 properties = SubResource("Resource_xkn1p")
@@ -45,7 +45,7 @@ width = 1.0
 
 [sub_resource type="Resource" id="Resource_m0jdi"]
 script = ExtResource("3_urtqa")
-position = Vector2(219.027, -106.104)
+position = Vector2(203.984, 0.472443)
 point_in = Vector2(0, 0)
 point_out = Vector2(0, 0)
 properties = SubResource("Resource_3l10p")
@@ -58,7 +58,7 @@ width = 1.0
 
 [sub_resource type="Resource" id="Resource_bdah2"]
 script = ExtResource("3_urtqa")
-position = Vector2(-133.154, -209.35)
+position = Vector2(-199.109, -91.4598)
 point_in = Vector2(0, 0)
 point_out = Vector2(0, 0)
 properties = SubResource("Resource_i080x")
@@ -71,7 +71,7 @@ width = 1.0
 
 [sub_resource type="Resource" id="Resource_cq7um"]
 script = ExtResource("3_urtqa")
-position = Vector2(-166.101, 0.97007)
+position = Vector2(-181.144, 107.547)
 point_in = Vector2(0, 0)
 point_out = Vector2(0, 0)
 properties = SubResource("Resource_8jiqw")
@@ -84,7 +84,7 @@ width = 1.0
 
 [sub_resource type="Resource" id="Resource_1aypn"]
 script = ExtResource("3_urtqa")
-position = Vector2(100.173, -266.874)
+position = Vector2(85.1298, -160.298)
 point_in = Vector2(-132.325, -98.3282)
 point_out = Vector2(8.98987, 113.871)
 properties = SubResource("Resource_46cab")
@@ -156,7 +156,7 @@ render_offset = 0.0
 
 [node name="bubble" type="Node2D"]
 texture_repeat = 2
-position = Vector2(-4.25357, -19.9061)
+position = Vector2(23, 34)
 script = ExtResource("1_rukih")
 _points = SubResource("Resource_lrx5g")
 shape_material = SubResource("Resource_q20eb")

@@ -1,7 +1,11 @@
-Limit shape size
-center shape afte transform
+	Limit shape size
+	center shape after transform
+
 2 more machines
-exit to score screen
-intro
+	exit to score screen
+	intro
 main menu
-proper ui transitions/locks
+	proper ui transitions/locks
+	
+scoring computation
+migrate entirely to tesselation

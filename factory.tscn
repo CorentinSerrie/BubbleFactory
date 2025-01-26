@@ -48,8 +48,6 @@ entrance_position = NodePath("entrance")
 exit_position = NodePath("exit")
 camera_position = NodePath(".")
 machine_ui = NodePath("../ui/machine_ui_1")
-slide_duration = null
-bubble_max_size = null
 
 [node name="entrance" type="Node2D" parent="machine_1"]
 position = Vector2(-611, -15)
@@ -70,8 +68,6 @@ entrance_position = NodePath("entrance")
 exit_position = NodePath("exit")
 camera_position = NodePath(".")
 machine_ui = NodePath("../ui/machine_ui_2")
-slide_duration = null
-bubble_max_size = null
 
 [node name="entrance" type="Node2D" parent="machine_2"]
 position = Vector2(-611, -15)
@@ -92,8 +88,6 @@ entrance_position = NodePath("entrance")
 exit_position = NodePath("exit")
 camera_position = NodePath(".")
 machine_ui = NodePath("../ui/machine_ui_3")
-slide_duration = null
-bubble_max_size = null
 
 [node name="entrance" type="Node2D" parent="machine_3"]
 position = Vector2(-611, -15)

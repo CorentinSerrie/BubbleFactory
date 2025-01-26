@@ -49,11 +49,12 @@ func OnBubblePositionChanged() -> void:
 			visible = true
 			_HideAll()
 		BubblePosition.exit:
+			var isShapeValid: bool = machine.IsShapeValid(machine.current_shape)
 			visible = true
 			_HideAll()
-			validate_button.visible = true
+			validate_button.visible = isShapeValid
 			redo_button.visible = true
-			OnMachineTypeChanged()
+			OnMachineTypeChanged()			
 		BubblePosition.out:
 			visible = false
 		pass

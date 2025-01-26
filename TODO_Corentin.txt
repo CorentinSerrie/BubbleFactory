@@ -7,7 +7,7 @@
 	
 	scoring computation
 	
-error -> redo only
+	error -> redo only
 main menu
 2 more machines
 	choose initial shape

@@ -93,6 +93,17 @@ func _ProcessShape(shape : SS2D_Shape, reset: bool = false) -> void:
 	tween.tween_callback(func(): _SetCurrentPosition(BubblePosition.exit))
 	pass
 
+func IsShapeValid(shape: SS2D_Shape) -> bool:
+	var points: PackedVector2Array = shape.get_point_array().get_tessellated_points()
+	if points.size() < 3:
+		return false
+	# Produce the fill mesh
+	var fill_tris: PackedInt32Array = Geometry2D.triangulate_polygon(points)
+	if fill_tris.is_empty():
+		return false
+
+	return true
+
 func _ValidateShape(shape : SS2D_Shape) -> void:
 	_SetCurrentPosition(BubblePosition.out)
 	shape_validated.emit(shape)

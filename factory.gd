@@ -130,7 +130,7 @@ func LaunchOutro() -> void:
 	var circle_area = _GetPackedArrayArea(circle_in.polygon)
 
 	var score = (1 - difference_area/circle_area) * 100
-	outro_score.text = ("accuracy: %0.2f%%" % score)
+	outro_score.text = ("%0.2f%%" % score)
 
 func _ClearOutroPresentation() -> void:
 	var bubble_one = presentation_parent.get_child(2)

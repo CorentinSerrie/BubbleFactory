@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://bax0pcpnh1j3f"]
+[gd_scene load_steps=38 format=3 uid="uid://bax0pcpnh1j3f"]
 
 [ext_resource type="Script" path="res://machine.gd" id="1_ccy0d"]
 [ext_resource type="Script" path="res://factory.gd" id="1_h41np"]
@@ -8,11 +8,13 @@
 [ext_resource type="Texture2D" uid="uid://oe6h2sj7cpre" path="res://assets/Placeholders/entity.png" id="6_ibmwj"]
 [ext_resource type="PackedScene" uid="uid://coa36m2fmcf08" path="res://machine_ui.tscn" id="7_s1267"]
 [ext_resource type="Texture2D" uid="uid://buf663yu2r0wt" path="res://assets/Characters/witch_spritesheet.png" id="7_su8h7"]
-[ext_resource type="Texture2D" uid="uid://b756mcui1ja82" path="res://assets/UI assets/Backup UI files/Bubble_factory_endgame_UI_enviro.png" id="8_5ofum"]
 [ext_resource type="Texture2D" uid="uid://b5c2patr3dvvs" path="res://assets/Characters/Bubble_factory_endgame_UI_character.png" id="9_txvpo"]
+[ext_resource type="Texture2D" uid="uid://c1xs6d5vesi1c" path="res://assets/Background/JAM_01_flou.jpg" id="9_v71cr"]
+[ext_resource type="Texture2D" uid="uid://dux6t50owq3qf" path="res://assets/UI assets/ppt_presentation_without_background.png" id="10_ivp1d"]
 [ext_resource type="Texture2D" uid="uid://bhtj2tqro3asx" path="res://assets/Placeholders/Bubble_factory_startgame_UI.png" id="10_nwnh2"]
 [ext_resource type="Texture2D" uid="uid://cchbhuhu8pvhw" path="res://assets/UI assets/new_atlas_texture.tres" id="11_ysgh4"]
 [ext_resource type="Theme" uid="uid://b0esmft70vicl" path="res://assets/UI assets/basic_theme.tres" id="12_oixl1"]
+[ext_resource type="Texture2D" uid="uid://bfwl5cg0mkfos" path="res://assets/UI assets/UI_toolkit_2_without_background.png" id="12_x3nxg"]
 [ext_resource type="Texture2D" uid="uid://ntjly63v4fui" path="res://assets/UI assets/UI_toolkit_text_buttons_no_bg.png" id="13_lgq16"]
 [ext_resource type="Script" path="res://basic_button.gd" id="14_f6xml"]
 [ext_resource type="AudioStream" uid="uid://b8laqoxdeh08p" path="res://assets/SFX/button_validation.mp3" id="16_8bw4s"]
@@ -79,6 +81,10 @@ animations = [{
 [sub_resource type="ViewportTexture" id="ViewportTexture_p6sn5"]
 viewport_path = NodePath("SubViewport")
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_mi5e0"]
+atlas = ExtResource("12_x3nxg")
+region = Rect2(104, 4896, 2792, 776)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_g1le5"]
 atlas = ExtResource("13_lgq16")
 region = Rect2(358, 278, 1109, 492)
@@ -97,7 +103,7 @@ machines = [NodePath("machine_1"), NodePath("machine_2"), NodePath("machine_3")]
 bubble = NodePath("SS2D_Shwape_Closed2")
 camera = NodePath("Camera2D")
 outro_panel = NodePath("ui/outro_panel")
-outro_score = NodePath("ui/outro_panel/score")
+outro_score = NodePath("ui/outro_panel/speach_bubble/score")
 circle_center = NodePath("SubViewport/bubble_presentation")
 circle_in = NodePath("SubViewport/bubble_presentation/circle_in")
 circle_out = NodePath("SubViewport/bubble_presentation/circle_out")
@@ -206,13 +212,22 @@ offset_right = 2176.0
 offset_bottom = 36.0
 
 [node name="outro_panel" type="TextureRect" parent="ui"]
-visible = false
 layout_mode = 0
 offset_left = -2150.0
 offset_top = -1210.0
 offset_right = 2150.0
 offset_bottom = 1210.0
-texture = ExtResource("8_5ofum")
+texture = ExtResource("9_v71cr")
+
+[node name="powerpoint" type="TextureRect" parent="ui/outro_panel"]
+layout_mode = 0
+offset_left = 1655.0
+offset_top = -452.0
+offset_right = 4314.0
+offset_bottom = 2076.0
+texture = ExtResource("10_ivp1d")
+expand_mode = 1
+stretch_mode = 4
 
 [node name="TextureRect2" type="TextureRect" parent="ui/outro_panel"]
 layout_mode = 0
@@ -226,30 +241,53 @@ stretch_mode = 2
 
 [node name="Button2" type="Button" parent="ui/outro_panel"]
 layout_mode = 0
-offset_left = 3753.0
-offset_top = 2159.0
+offset_left = 3543.0
+offset_top = 2111.0
 offset_right = 4153.0
 offset_bottom = 2359.0
-theme_override_font_sizes/font_size = 100
+theme = ExtResource("12_oixl1")
+theme_override_font_sizes/font_size = 180
 text = "Restart"
-
-[node name="score" type="Label" parent="ui/outro_panel"]
-layout_mode = 0
-offset_left = 2602.0
-offset_top = 1432.0
-offset_right = 3219.0
-offset_bottom = 1597.0
-theme_override_font_sizes/font_size = 120
-text = "score: 50%"
 
 [node name="TextureRect" type="TextureRect" parent="ui/outro_panel"]
 layout_mode = 0
-offset_left = 2433.0
-offset_top = 117.0
-offset_right = 3668.0
-offset_bottom = 1351.0
+offset_left = 2385.0
+offset_top = 417.0
+offset_right = 3620.0
+offset_bottom = 1651.0
 texture = SubResource("ViewportTexture_p6sn5")
 stretch_mode = 5
+
+[node name="speach_bubble" type="TextureRect" parent="ui/outro_panel"]
+layout_mode = 0
+offset_left = 761.0
+offset_top = 1684.0
+offset_right = 3469.0
+offset_bottom = 2304.0
+texture = SubResource("AtlasTexture_mi5e0")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="ui/outro_panel/speach_bubble"]
+layout_mode = 0
+offset_left = 102.0
+offset_top = 330.0
+offset_right = 2074.0
+offset_bottom = 570.0
+theme = ExtResource("12_oixl1")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 160
+text = "So we managed to get it round at"
+
+[node name="score" type="Label" parent="ui/outro_panel/speach_bubble"]
+layout_mode = 0
+offset_left = 2122.0
+offset_top = 323.0
+offset_right = 2739.0
+offset_bottom = 488.0
+theme = ExtResource("12_oixl1")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 180
+text = "50.09%"
 
 [node name="intro_panel" type="TextureRect" parent="ui"]
 visible = false
@@ -377,6 +415,7 @@ size = Vector2i(500, 500)
 position = Vector2(250, 250)
 
 [node name="background" type="Polygon2D" parent="SubViewport/bubble_presentation"]
+color = Color(0.92549, 0.92549, 0.92549, 1)
 polygon = PackedVector2Array(-1500, -1500, 1500, -1500, 1500, 1500, -1500, 1500)
 
 [node name="circle_in" type="Polygon2D" parent="SubViewport/bubble_presentation"]

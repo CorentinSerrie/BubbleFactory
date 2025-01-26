@@ -1,11 +1,11 @@
-[gd_scene load_steps=38 format=3 uid="uid://bax0pcpnh1j3f"]
+[gd_scene load_steps=43 format=3 uid="uid://bax0pcpnh1j3f"]
 
 [ext_resource type="Script" path="res://machine.gd" id="1_ccy0d"]
 [ext_resource type="Script" path="res://factory.gd" id="1_h41np"]
 [ext_resource type="Texture2D" uid="uid://1g0klor74kmp" path="res://assets/Characters/fish_spritesheet.png" id="2_ipewm"]
 [ext_resource type="Texture2D" uid="uid://byhxn52kmyq6s" path="res://icon.svg" id="2_l52c2"]
 [ext_resource type="PackedScene" uid="uid://cpy4b4vl4jqcp" path="res://ma_nouvelle_bulle_trop_stylee.tscn" id="2_qchq2"]
-[ext_resource type="Texture2D" uid="uid://oe6h2sj7cpre" path="res://assets/Placeholders/entity.png" id="6_ibmwj"]
+[ext_resource type="Texture2D" uid="uid://cs4rwpfsdquxa" path="res://assets/Characters/entity_spritesheet.png" id="4_bh05e"]
 [ext_resource type="PackedScene" uid="uid://coa36m2fmcf08" path="res://machine_ui.tscn" id="7_s1267"]
 [ext_resource type="Texture2D" uid="uid://buf663yu2r0wt" path="res://assets/Characters/witch_spritesheet.png" id="7_su8h7"]
 [ext_resource type="Texture2D" uid="uid://b5c2patr3dvvs" path="res://assets/Characters/Bubble_factory_endgame_UI_character.png" id="9_txvpo"]
@@ -24,8 +24,10 @@
 [ext_resource type="Texture2D" uid="uid://ib1hsmy6ulwp" path="res://assets/Background/JAM_01_04.png" id="20_pnigh"]
 [ext_resource type="Texture2D" uid="uid://c1l0mp1xuck77" path="res://assets/Background/JAM_01_05.png" id="21_r36ts"]
 [ext_resource type="Texture2D" uid="uid://cj8u05tpix0de" path="res://assets/Background/JAM_01_06.png" id="22_c6ah6"]
+[ext_resource type="Script" path="res://rolling.gd" id="23_5idcy"]
 [ext_resource type="Texture2D" uid="uid://cppvp2mbx6tje" path="res://assets/Background/JAM_01_07.png" id="23_lo2ci"]
 [ext_resource type="Texture2D" uid="uid://bfrd2ao1kbys3" path="res://assets/Background/JAM_01_08.png" id="24_meiks"]
+[ext_resource type="Texture2D" uid="uid://bivaylmaettxl" path="res://assets/Characters/witchpot_sprite.png" id="27_1e83p"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8seab"]
 atlas = ExtResource("2_ipewm")
@@ -78,6 +80,28 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_plng8"]
+atlas = ExtResource("4_bh05e")
+region = Rect2(0, 0, 1208, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q3t02"]
+atlas = ExtResource("4_bh05e")
+region = Rect2(1208, 0, 1208, 1080)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yqamp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_plng8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q3t02")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
 [sub_resource type="ViewportTexture" id="ViewportTexture_p6sn5"]
 viewport_path = NodePath("SubViewport")
 
@@ -118,18 +142,20 @@ frame_progress = 0.115955
 position = Vector2(1145, -19)
 sprite_frames = SubResource("SpriteFrames_egutm")
 
-[node name="Entity" type="Sprite2D" parent="."]
-position = Vector2(156, -7)
-texture = ExtResource("6_ibmwj")
+[node name="entity" type="AnimatedSprite2D" parent="."]
+position = Vector2(114, 54)
+sprite_frames = SubResource("SpriteFrames_yqamp")
+frame_progress = 0.259354
 
 [node name="SS2D_Shwape_Closed2" parent="." instance=ExtResource("2_qchq2")]
 position = Vector2(-1359, 107)
 
-[node name="machine_1" type="Node2D" parent="." node_paths=PackedStringArray("entrance_position", "exit_position", "camera_position", "machine_ui", "animated_shape")]
+[node name="machine_1" type="Node2D" parent="." node_paths=PackedStringArray("entrance_position", "exit_position", "inside_position", "camera_position", "machine_ui", "animated_shape")]
 position = Vector2(-927, 83)
 script = ExtResource("1_ccy0d")
 entrance_position = NodePath("entrance")
 exit_position = NodePath("exit")
+inside_position = NodePath(".")
 camera_position = NodePath("camera_position")
 machine_ui = NodePath("../ui/machine_ui_1")
 animated_shape = NodePath("../Fish")
@@ -143,19 +169,24 @@ position = Vector2(509, -2)
 [node name="camera_position" type="Node2D" parent="machine_1"]
 position = Vector2(0, -143)
 
-[node name="machine_2" type="Node2D" parent="." node_paths=PackedStringArray("entrance_position", "exit_position", "camera_position", "machine_ui")]
+[node name="machine_2" type="Node2D" parent="." node_paths=PackedStringArray("entrance_position", "exit_position", "inside_position", "camera_position", "machine_ui", "animated_shape")]
 position = Vector2(137, 91)
 script = ExtResource("1_ccy0d")
 entrance_position = NodePath("entrance")
 exit_position = NodePath("exit")
+inside_position = NodePath("inside")
 camera_position = NodePath("camera_position")
 machine_ui = NodePath("../ui/machine_ui_2")
+animated_shape = NodePath("../entity")
 
 [node name="entrance" type="Node2D" parent="machine_2"]
 position = Vector2(-611, -15)
 
 [node name="exit" type="Node2D" parent="machine_2"]
 position = Vector2(509, -2)
+
+[node name="inside" type="Node2D" parent="machine_2"]
+position = Vector2(0, 69)
 
 [node name="Sprite2D" type="Sprite2D" parent="machine_2"]
 visible = false
@@ -165,11 +196,12 @@ texture = ExtResource("2_l52c2")
 [node name="camera_position" type="Node2D" parent="machine_2"]
 position = Vector2(0, -143)
 
-[node name="machine_3" type="Node2D" parent="." node_paths=PackedStringArray("entrance_position", "exit_position", "camera_position", "machine_ui", "animated_shape")]
+[node name="machine_3" type="Node2D" parent="." node_paths=PackedStringArray("entrance_position", "exit_position", "inside_position", "camera_position", "machine_ui", "animated_shape")]
 position = Vector2(1169, 101)
 script = ExtResource("1_ccy0d")
 entrance_position = NodePath("entrance")
 exit_position = NodePath("exit")
+inside_position = NodePath("../WitchpotSprite")
 camera_position = NodePath("camera_position")
 machine_ui = NodePath("../ui/machine_ui_3")
 animation_duration = 1.8
@@ -194,24 +226,28 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="machine_ui_1" parent="ui" instance=ExtResource("7_s1267")]
+visible = false
 offset_left = 58.0
 offset_top = 1.0
 offset_right = 98.0
 offset_bottom = 41.0
 
 [node name="machine_ui_2" parent="ui" instance=ExtResource("7_s1267")]
+visible = false
 offset_left = 1085.0
 offset_top = -8.0
 offset_right = 1125.0
 offset_bottom = 32.0
 
 [node name="machine_ui_3" parent="ui" instance=ExtResource("7_s1267")]
+visible = false
 offset_left = 2136.0
 offset_top = -4.0
 offset_right = 2176.0
 offset_bottom = 36.0
 
 [node name="outro_panel" type="TextureRect" parent="ui"]
+visible = false
 layout_mode = 0
 offset_left = -2150.0
 offset_top = -1210.0
@@ -385,21 +421,45 @@ texture = ExtResource("18_lwpcm")
 z_index = 2
 texture = ExtResource("19_ucsw1")
 
-[node name="Jam0104" type="Sprite2D" parent="background"]
+[node name="Jam0104" type="Sprite2D" parent="background" node_paths=PackedStringArray("center")]
 z_index = 2
 texture = ExtResource("20_pnigh")
+script = ExtResource("23_5idcy")
+speed = 0.46
+center = NodePath("center")
 
-[node name="Jam0105" type="Sprite2D" parent="background"]
+[node name="center" type="Node2D" parent="background/Jam0104"]
+position = Vector2(1689, 310)
+
+[node name="Jam0105" type="Sprite2D" parent="background" node_paths=PackedStringArray("center")]
 z_index = 2
 texture = ExtResource("21_r36ts")
+script = ExtResource("23_5idcy")
+speed = 0.47
+center = NodePath("Node2D")
 
-[node name="Jam0106" type="Sprite2D" parent="background"]
+[node name="Node2D" type="Node2D" parent="background/Jam0105"]
+position = Vector2(722, 310)
+
+[node name="Jam0106" type="Sprite2D" parent="background" node_paths=PackedStringArray("center")]
 z_index = 2
 texture = ExtResource("22_c6ah6")
+script = ExtResource("23_5idcy")
+speed = 0.55
+center = NodePath("Node2D")
 
-[node name="Jam0107" type="Sprite2D" parent="background"]
+[node name="Node2D" type="Node2D" parent="background/Jam0106"]
+position = Vector2(-395, 310)
+
+[node name="Jam0107" type="Sprite2D" parent="background" node_paths=PackedStringArray("center")]
 z_index = 2
 texture = ExtResource("23_lo2ci")
+script = ExtResource("23_5idcy")
+speed = 0.5
+center = NodePath("Node2D")
+
+[node name="Node2D" type="Node2D" parent="background/Jam0107"]
+position = Vector2(-1347, 310)
 
 [node name="Jam0108" type="Sprite2D" parent="background"]
 z_index = 2
@@ -429,6 +489,11 @@ polygon = PackedVector2Array(182.01, 0, 181.651, 11.4285, 180.575, 22.8119, 178.
 
 [node name="start_pos" type="Node2D" parent="."]
 position = Vector2(-1796, 121)
+
+[node name="WitchpotSprite" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(1147, 230)
+texture = ExtResource("27_1e83p")
 
 [connection signal="pressed" from="ui/outro_panel/Button2" to="." method="Restart"]
 [connection signal="pressed" from="ui/intro_panel/Button" to="ui/intro_panel" method="hide"]

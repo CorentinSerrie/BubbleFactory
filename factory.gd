@@ -60,7 +60,7 @@ func _StartWithShape(index: int) -> void:
 	print(bubble_list.list[index])
 	bubble = bubble_list.list[index].instantiate()
 	add_child(bubble)
-	move_child(bubble, 2)
+	move_child(bubble, 3)
 	bubble.position = start_position.position
 	_SaveInitialShape(bubble)
 	pass

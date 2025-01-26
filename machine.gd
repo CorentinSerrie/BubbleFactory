@@ -3,6 +3,7 @@ extends Node2D
 
 @export var entrance_position : Node2D
 @export var exit_position : Node2D
+@export var inside_position : Node2D
 @export var camera_position: Node2D
 @export var machine_ui: Control
 
@@ -84,7 +85,7 @@ func _ResetToEntrance(shape: SS2D_Shape) -> void:
 	if(animate_process):
 		tween.tween_property(shape, "scale", Vector2.ZERO, slide_duration)
 		tween.parallel()
-	tween.tween_property(shape, "global_position", global_position, slide_duration)
+	tween.tween_property(shape, "global_position", inside_position.global_position, slide_duration)
 	tween.tween_callback((
 		func ():
 			if(animated_shape != null):
@@ -128,7 +129,7 @@ func _ProcessShape(shape : SS2D_Shape) -> void:
 	if(animate_process):
 		tween.tween_property(shape, "scale", Vector2.ZERO, slide_duration)
 		tween.parallel()
-	tween.tween_property(shape, "global_position", global_position, slide_duration)
+	tween.tween_property(shape, "global_position", inside_position.global_position, slide_duration)
 	tween.tween_callback((
 		func ():
 			if(animated_shape != null):
@@ -343,6 +344,9 @@ func _ConstraintShape(shape: SS2D_Shape) -> void:
 
 func _SetCurrentPosition(bubble_pos) -> void:
 	current_position = bubble_pos
+	if((current_position == BubblePosition.entrance || current_position == BubblePosition.exit) && name == "machine_2"):
+		print("yay")
+		animated_shape.set_frame_and_progress(0, 0.8)
 	machine_ui.OnBubblePositionChanged()
 
 	

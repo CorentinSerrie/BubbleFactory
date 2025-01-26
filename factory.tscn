@@ -31,11 +31,11 @@ circle_out = NodePath("SubViewport/bubble_presentation/circle_out")
 presentation_parent = NodePath("SubViewport/bubble_presentation")
 
 [node name="Fishman" type="Sprite2D" parent="."]
-position = Vector2(-948, -380)
+position = Vector2(-948, 143)
 texture = ExtResource("2_n4ilt")
 
 [node name="Entity" type="Sprite2D" parent="."]
-position = Vector2(167, -386)
+position = Vector2(156, -7)
 texture = ExtResource("6_ibmwj")
 
 [node name="SS2D_Shwape_Closed2" parent="." instance=ExtResource("2_qchq2")]
@@ -77,6 +77,7 @@ position = Vector2(-611, -15)
 position = Vector2(509, -2)
 
 [node name="Sprite2D" type="Sprite2D" parent="machine_2"]
+visible = false
 scale = Vector2(3.755, 3.755)
 texture = ExtResource("2_l52c2")
 

@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://bubble_shape_list.gd" id="4_uipqu"]
 [ext_resource type="PackedScene" uid="uid://uavjqxn7qfar" path="res://bubble_crown.tscn" id="5_7r30w"]
 [ext_resource type="PackedScene" uid="uid://dpch2l6lnt4eg" path="res://bubble_horse.tscn" id="6_44r88"]
-[ext_resource type="PackedScene" path="res://bubble_star.tscn" id="7_lkj7n"]
+[ext_resource type="PackedScene" uid="uid://c8jqj84xay4fx" path="res://bubble_star.tscn" id="7_lkj7n"]
 
 [resource]
 script = ExtResource("4_uipqu")

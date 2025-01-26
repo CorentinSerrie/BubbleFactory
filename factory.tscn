@@ -346,6 +346,7 @@ theme_override_font_sizes/font_size = 180
 text = "50.09%"
 
 [node name="intro_panel" type="TextureRect" parent="ui" node_paths=PackedStringArray("bubble_1", "bubble_2", "bubble_3", "bubble_4", "transition_screen", "next_button", "intro_sound", "transition_sound")]
+visible = false
 z_index = 1
 layout_mode = 0
 offset_left = -2150.0

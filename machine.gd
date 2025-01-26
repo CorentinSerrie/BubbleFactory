@@ -41,6 +41,7 @@ func _ready():
 	machine_ui.OnBubblePositionChanged()
 	machine_ui.validate_button.pressed.connect(_OnValidatePressed)
 	machine_ui.redo_button.pressed.connect(_OnRedoPressed)
+	machine_ui.next_button.pressed.connect(_OnValidatePressed)
 
 func _OnValidatePressed() -> void:
 	if(is_busy):
@@ -60,7 +61,7 @@ func _OnRedoPressed() -> void:
 
 	match current_position:
 		BubblePosition.exit:
-			_ProcessShape(current_shape, true)
+			_ResetToEntrance(current_shape)
 		_:
 			return
 
@@ -76,7 +77,50 @@ func EnterShape(shape : SS2D_Shape) -> void:
 	tween.tween_callback(func(): _SetCurrentPosition(BubblePosition.entrance))
 	pass
 
-func _ProcessShape(shape : SS2D_Shape, reset: bool = false) -> void:
+func _ResetToEntrance(shape: SS2D_Shape) -> void: 
+	_SetCurrentPosition( BubblePosition.inside)
+
+	var tween = get_tree().create_tween()
+	if(animate_process):
+		tween.tween_property(shape, "scale", Vector2.ZERO, slide_duration)
+		tween.parallel()
+	tween.tween_property(shape, "global_position", global_position, slide_duration)
+	tween.tween_callback((
+		func ():
+			if(animated_shape != null):
+				animated_shape.play()
+			_ResetShape(shape)
+	))
+	tween.tween_interval(animation_duration)
+	tween.tween_callback(
+		func ():
+			if(animated_shape != null):
+				animated_shape.pause()
+				animated_shape.set_frame_and_progress(0, 0.0)
+	)
+	if(animate_process):
+		tween.tween_callback(
+			func(): 
+				var center_tween = get_tree().create_tween()
+				for i in range(0,10):
+					center_tween.tween_interval(slide_duration/10)
+					center_tween.tween_callback(
+						func(): 
+							_CenterShape(shape)
+							print(shape.global_position)
+					)
+		)
+		tween.tween_property(shape, "scale", Vector2.ONE, slide_duration)
+		tween.parallel()
+	tween.tween_property(shape, "global_position", entrance_position.global_position, slide_duration)
+	tween.tween_callback(
+		func(): 
+			_SetCurrentPosition(BubblePosition.entrance)
+	)
+	pass
+
+
+func _ProcessShape(shape : SS2D_Shape) -> void:
 	_SetCurrentPosition( BubblePosition.inside)
 
 
@@ -89,15 +133,13 @@ func _ProcessShape(shape : SS2D_Shape, reset: bool = false) -> void:
 		func ():
 			if(animated_shape != null):
 				animated_shape.play()
-			if(reset):
-				_ResetShape(shape)
 			match current_type:
 				MachineType.SQUASH_STRETCH:
 					_SquashStretch(shape, machine_ui.angle_slider.value, machine_ui.strenght_slider.value)
 				MachineType.RAVIOLI:
-					_Ravioli(shape, 0, machine_ui.ravioli_slider.value)
+					_Ravioli(shape, machine_ui.angle_slider.value, machine_ui.strenght_slider.value)
 				MachineType.STAR:
-					_StarShape(shape,  machine_ui.star_angle_slider.value, machine_ui.star_strength_slider.value)
+					_StarShape(shape, machine_ui.angle_slider.value, machine_ui.strenght_slider.value)
 				_:
 					pass
 	))
@@ -203,16 +245,11 @@ func _StarShape(shape: SS2D_Shape, angle: float, strength: float) -> void:
 		var angle_vector_y : Vector2 = angle_vector_x.rotated(PI/2)
 
 		var delta_pos : Vector2 = point.position - center
-		var proj_x : float = delta_pos.dot(angle_vector_x)
-		var proj_y : float = delta_pos.dot(angle_vector_y)
 
 		var angle_to_x = angle_vector_x.angle_to(delta_pos)
 
 		var sin_plus = (1 + sin(4 * angle_to_x))/2
-		
-		"var angle_modulo = fmod(angle_to_x, PI/2)
-		var angle_minus_pi2 = angle_modulo - PI/4
-		var result = abs(angle_minus_pi2)/(PI/4)"
+
 		delta_pos += delta_pos * sin_plus * strength
 		point.position = center + delta_pos
 

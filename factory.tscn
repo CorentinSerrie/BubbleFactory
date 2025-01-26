@@ -151,6 +151,10 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="machine_ui_1" parent="ui" instance=ExtResource("7_s1267")]
+offset_left = 58.0
+offset_top = -10.0
+offset_right = 98.0
+offset_bottom = 30.0
 
 [node name="machine_ui_2" parent="ui" instance=ExtResource("7_s1267")]
 offset_left = 1085.0
@@ -165,7 +169,6 @@ offset_right = 2176.0
 offset_bottom = 25.0
 
 [node name="outro_panel" type="TextureRect" parent="ui"]
-visible = false
 layout_mode = 0
 offset_left = -2150.0
 offset_top = -1210.0
@@ -211,7 +214,6 @@ texture = SubResource("ViewportTexture_p6sn5")
 stretch_mode = 5
 
 [node name="intro_panel" type="TextureRect" parent="ui"]
-visible = false
 layout_mode = 0
 offset_left = -2150.0
 offset_top = -1210.0

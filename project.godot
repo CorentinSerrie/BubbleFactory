@@ -10,10 +10,10 @@ config_version=5
 
 [application]
 
-config/name="Bubble Factory"
+config/name="The clients wants a Round Bubble"
 run/main_scene="res://factory.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="res://assets/UI assets/Cover_Image_Round_Bubble.png"
 
 [display]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://bax0pcpnh1j3f"]
+[gd_scene load_steps=46 format=3 uid="uid://bax0pcpnh1j3f"]
 
 [ext_resource type="Script" path="res://machine.gd" id="1_ccy0d"]
 [ext_resource type="Script" path="res://factory.gd" id="1_h41np"]
@@ -11,12 +11,13 @@
 [ext_resource type="Texture2D" uid="uid://b5c2patr3dvvs" path="res://assets/Characters/Bubble_factory_endgame_UI_character.png" id="9_txvpo"]
 [ext_resource type="Texture2D" uid="uid://c1xs6d5vesi1c" path="res://assets/Background/JAM_01_flou.jpg" id="9_v71cr"]
 [ext_resource type="Texture2D" uid="uid://dux6t50owq3qf" path="res://assets/UI assets/ppt_presentation_without_background.png" id="10_ivp1d"]
-[ext_resource type="Texture2D" uid="uid://bhtj2tqro3asx" path="res://assets/Placeholders/Bubble_factory_startgame_UI.png" id="10_nwnh2"]
 [ext_resource type="Texture2D" uid="uid://cchbhuhu8pvhw" path="res://assets/UI assets/new_atlas_texture.tres" id="11_ysgh4"]
 [ext_resource type="Theme" uid="uid://b0esmft70vicl" path="res://assets/UI assets/basic_theme.tres" id="12_oixl1"]
 [ext_resource type="Texture2D" uid="uid://bfwl5cg0mkfos" path="res://assets/UI assets/UI_toolkit_2_without_background.png" id="12_x3nxg"]
 [ext_resource type="Texture2D" uid="uid://ntjly63v4fui" path="res://assets/UI assets/UI_toolkit_text_buttons_no_bg.png" id="13_lgq16"]
 [ext_resource type="Script" path="res://basic_button.gd" id="14_f6xml"]
+[ext_resource type="Texture2D" uid="uid://cwn13j1is0v54" path="res://assets/Characters/Bubble_factory_startgame_UI_characters.png" id="14_xrqmm"]
+[ext_resource type="Script" path="res://intro.gd" id="15_oyy6m"]
 [ext_resource type="AudioStream" uid="uid://b8laqoxdeh08p" path="res://assets/SFX/button_validation.mp3" id="16_8bw4s"]
 [ext_resource type="Texture2D" uid="uid://n2h3rsogtyni" path="res://assets/Background/JAM_01_01.png" id="17_o5y6b"]
 [ext_resource type="Texture2D" uid="uid://ctr5mrm6531g7" path="res://assets/Background/JAM_01_02.png" id="18_lwpcm"]
@@ -108,6 +109,14 @@ viewport_path = NodePath("SubViewport")
 [sub_resource type="AtlasTexture" id="AtlasTexture_mi5e0"]
 atlas = ExtResource("12_x3nxg")
 region = Rect2(104, 4896, 2792, 776)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ihidb"]
+atlas = ExtResource("12_x3nxg")
+region = Rect2(88, 6072, 2800, 528)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1qf2r"]
+atlas = ExtResource("12_x3nxg")
+region = Rect2(104, 4888, 2808, 776)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g1le5"]
 atlas = ExtResource("13_lgq16")
@@ -325,24 +334,120 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 180
 text = "50.09%"
 
-[node name="intro_panel" type="TextureRect" parent="ui"]
-visible = false
+[node name="intro_panel" type="TextureRect" parent="ui" node_paths=PackedStringArray("bubble_1", "bubble_2", "bubble_3", "bubble_4", "next_button")]
 z_index = 1
 layout_mode = 0
 offset_left = -2150.0
 offset_top = -1210.0
 offset_right = 2150.0
 offset_bottom = 1210.0
-texture = ExtResource("10_nwnh2")
+texture = ExtResource("9_v71cr")
+script = ExtResource("15_oyy6m")
+bubble_1 = NodePath("bubble_1")
+bubble_2 = NodePath("bubble_2")
+bubble_3 = NodePath("bubble_3")
+bubble_4 = NodePath("bubble_4")
+next_button = NodePath("Button")
+delay = 3.0
+
+[node name="TextureRect" type="TextureRect" parent="ui/intro_panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("14_xrqmm")
 
 [node name="Button" type="Button" parent="ui/intro_panel"]
 layout_mode = 0
-offset_left = 3753.0
-offset_top = 2159.0
-offset_right = 4153.0
-offset_bottom = 2359.0
-theme_override_font_sizes/font_size = 100
+offset_left = 3548.0
+offset_top = 2078.0
+offset_right = 4132.0
+offset_bottom = 2380.0
+theme = ExtResource("12_oixl1")
+theme_override_font_sizes/font_size = 180
 text = "Next"
+
+[node name="bubble_1" type="TextureRect" parent="ui/intro_panel"]
+layout_mode = 0
+offset_left = 2044.0
+offset_top = 52.0
+offset_right = 3927.0
+offset_bottom = 387.0
+theme = ExtResource("12_oixl1")
+texture = SubResource("AtlasTexture_ihidb")
+expand_mode = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ui/intro_panel/bubble_1"]
+layout_mode = 0
+offset_left = 150.0
+offset_top = 64.0
+offset_right = 1989.0
+offset_bottom = 508.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 100
+text = "*clic* Hello Bubble Factory ? Corporate just secured a big contract for a million bubbles."
+
+[node name="bubble_2" type="TextureRect" parent="ui/intro_panel"]
+layout_mode = 0
+offset_left = 2232.0
+offset_top = 457.0
+offset_right = 4243.0
+offset_bottom = 808.0
+theme = ExtResource("12_oixl1")
+texture = SubResource("AtlasTexture_ihidb")
+expand_mode = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ui/intro_panel/bubble_2"]
+layout_mode = 0
+offset_left = 117.0
+offset_top = 81.0
+offset_right = 1962.0
+offset_bottom = 525.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 100
+text = "The only thing is: the client wants the bubbles to be ROUND. Also they need them for tomorrow."
+
+[node name="bubble_3" type="TextureRect" parent="ui/intro_panel"]
+layout_mode = 0
+offset_left = 229.0
+offset_top = 1799.0
+offset_right = 2501.0
+offset_bottom = 2326.0
+theme = ExtResource("12_oixl1")
+texture = SubResource("AtlasTexture_1qf2r")
+expand_mode = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ui/intro_panel/bubble_3"]
+layout_mode = 0
+offset_left = 96.0
+offset_top = 231.0
+offset_right = 2256.0
+offset_bottom = 675.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 120
+text = "A ROUND bubble? Have they LOST THEIR MIND? We would have to rework our entire workflow!"
+
+[node name="bubble_4" type="TextureRect" parent="ui/intro_panel"]
+layout_mode = 0
+offset_left = 2925.0
+offset_top = 1521.0
+offset_right = 4167.0
+offset_bottom = 2043.0
+theme = ExtResource("12_oixl1")
+texture = SubResource("AtlasTexture_1qf2r")
+expand_mode = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ui/intro_panel/bubble_4"]
+layout_mode = 0
+offset_left = 117.0
+offset_top = 226.0
+offset_right = 1268.0
+offset_bottom = 670.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 120
+text = "We don't even have documentation for that."
 
 [node name="shape_selection" type="TextureRect" parent="ui"]
 visible = false

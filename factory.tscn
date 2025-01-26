@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://bax0pcpnh1j3f"]
+[gd_scene load_steps=53 format=3 uid="uid://bax0pcpnh1j3f"]
 
 [ext_resource type="Script" path="res://machine.gd" id="1_ccy0d"]
 [ext_resource type="Script" path="res://factory.gd" id="1_h41np"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cs4rwpfsdquxa" path="res://assets/Characters/entity_spritesheet.png" id="4_bh05e"]
 [ext_resource type="PackedScene" uid="uid://coa36m2fmcf08" path="res://machine_ui.tscn" id="7_s1267"]
 [ext_resource type="Texture2D" uid="uid://buf663yu2r0wt" path="res://assets/Characters/witch_spritesheet.png" id="7_su8h7"]
+[ext_resource type="Texture2D" uid="uid://b756mcui1ja82" path="res://assets/UI assets/Backup UI files/Bubble_factory_endgame_UI_enviro.png" id="8_5ofum"]
 [ext_resource type="Texture2D" uid="uid://b5c2patr3dvvs" path="res://assets/Characters/Bubble_factory_endgame_UI_character.png" id="9_txvpo"]
 [ext_resource type="Texture2D" uid="uid://c1xs6d5vesi1c" path="res://assets/Background/JAM_01_flou.jpg" id="9_v71cr"]
 [ext_resource type="Texture2D" uid="uid://dux6t50owq3qf" path="res://assets/UI assets/ppt_presentation_without_background.png" id="10_ivp1d"]
@@ -29,6 +30,12 @@
 [ext_resource type="Texture2D" uid="uid://cppvp2mbx6tje" path="res://assets/Background/JAM_01_07.png" id="23_lo2ci"]
 [ext_resource type="Texture2D" uid="uid://bfrd2ao1kbys3" path="res://assets/Background/JAM_01_08.png" id="24_meiks"]
 [ext_resource type="Texture2D" uid="uid://bivaylmaettxl" path="res://assets/Characters/witchpot_sprite.png" id="27_1e83p"]
+[ext_resource type="AudioStream" uid="uid://qad8ia2wmiqj" path="res://assets/SFX/end-scene.mp3" id="30_kvp8d"]
+[ext_resource type="AudioStream" uid="uid://6iurscpa383g" path="res://assets/SFX/Entity_action.mp3" id="31_6shi8"]
+[ext_resource type="AudioStream" uid="uid://cxaja3nk38cbo" path="res://assets/SFX/fish_action.mp3" id="32_ijceo"]
+[ext_resource type="AudioStream" uid="uid://dy4v8kipx7xq4" path="res://assets/SFX/intro_scene.mp3" id="33_rm1sn"]
+[ext_resource type="AudioStream" uid="uid://blktoc0hu7ot6" path="res://assets/SFX/intro_transition.mp3" id="34_rjgla"]
+[ext_resource type="AudioStream" uid="uid://fy5hl488h5sl" path="res://assets/SFX/sorcerer_action.mp3" id="35_64gkw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8seab"]
 atlas = ExtResource("2_ipewm")
@@ -126,7 +133,7 @@ region = Rect2(358, 278, 1109, 492)
 atlas = ExtResource("13_lgq16")
 region = Rect2(1750, 278, 1109, 492)
 
-[node name="Factory" type="Node2D" node_paths=PackedStringArray("button", "shape_picker", "shape_picker_container", "start_position", "machines", "bubble", "camera", "outro_panel", "outro_score", "circle_center", "circle_in", "circle_out", "presentation_parent")]
+[node name="Factory" type="Node2D" node_paths=PackedStringArray("button", "shape_picker", "shape_picker_container", "start_position", "machines", "bubble", "camera", "outro_panel", "outro_score", "circle_center", "circle_in", "circle_out", "presentation_parent", "end_sound")]
 script = ExtResource("1_h41np")
 button = NodePath("ui/shape_selection/Go button")
 shape_picker = NodePath("ui/shape_selection/VBoxContainer/HBoxContainer/shape_picker")
@@ -141,6 +148,7 @@ circle_center = NodePath("SubViewport/bubble_presentation")
 circle_in = NodePath("SubViewport/bubble_presentation/circle_in")
 circle_out = NodePath("SubViewport/bubble_presentation/circle_out")
 presentation_parent = NodePath("SubViewport/bubble_presentation")
+end_sound = NodePath("end_scene")
 
 [node name="Fish" type="AnimatedSprite2D" parent="."]
 position = Vector2(-935, 103.5)
@@ -159,7 +167,7 @@ frame_progress = 0.259354
 [node name="SS2D_Shwape_Closed2" parent="." instance=ExtResource("2_qchq2")]
 position = Vector2(-1359, 107)
 
-[node name="machine_1" type="Node2D" parent="." node_paths=PackedStringArray("entrance_position", "exit_position", "inside_position", "camera_position", "machine_ui", "animated_shape")]
+[node name="machine_1" type="Node2D" parent="." node_paths=PackedStringArray("entrance_position", "exit_position", "inside_position", "camera_position", "machine_ui", "animated_shape", "sound")]
 position = Vector2(-927, 83)
 script = ExtResource("1_ccy0d")
 entrance_position = NodePath("entrance")
@@ -168,6 +176,7 @@ inside_position = NodePath(".")
 camera_position = NodePath("camera_position")
 machine_ui = NodePath("../ui/machine_ui_1")
 animated_shape = NodePath("../Fish")
+sound = NodePath("../fish_action")
 
 [node name="entrance" type="Node2D" parent="machine_1"]
 position = Vector2(-611, -15)
@@ -178,7 +187,7 @@ position = Vector2(509, -2)
 [node name="camera_position" type="Node2D" parent="machine_1"]
 position = Vector2(0, -143)
 
-[node name="machine_2" type="Node2D" parent="." node_paths=PackedStringArray("entrance_position", "exit_position", "inside_position", "camera_position", "machine_ui", "animated_shape")]
+[node name="machine_2" type="Node2D" parent="." node_paths=PackedStringArray("entrance_position", "exit_position", "inside_position", "camera_position", "machine_ui", "animated_shape", "sound")]
 position = Vector2(137, 91)
 script = ExtResource("1_ccy0d")
 entrance_position = NodePath("entrance")
@@ -187,6 +196,7 @@ inside_position = NodePath("inside")
 camera_position = NodePath("camera_position")
 machine_ui = NodePath("../ui/machine_ui_2")
 animated_shape = NodePath("../entity")
+sound = NodePath("../entity_action")
 
 [node name="entrance" type="Node2D" parent="machine_2"]
 position = Vector2(-611, -15)
@@ -205,7 +215,7 @@ texture = ExtResource("2_l52c2")
 [node name="camera_position" type="Node2D" parent="machine_2"]
 position = Vector2(0, -143)
 
-[node name="machine_3" type="Node2D" parent="." node_paths=PackedStringArray("entrance_position", "exit_position", "inside_position", "camera_position", "machine_ui", "animated_shape")]
+[node name="machine_3" type="Node2D" parent="." node_paths=PackedStringArray("entrance_position", "exit_position", "inside_position", "camera_position", "machine_ui", "animated_shape", "sound")]
 position = Vector2(1169, 101)
 script = ExtResource("1_ccy0d")
 entrance_position = NodePath("entrance")
@@ -215,6 +225,7 @@ camera_position = NodePath("camera_position")
 machine_ui = NodePath("../ui/machine_ui_3")
 animation_duration = 1.8
 animated_shape = NodePath("../witch")
+sound = NodePath("../sorcerer_action")
 
 [node name="entrance" type="Node2D" parent="machine_3"]
 position = Vector2(-611, -15)
@@ -334,7 +345,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 180
 text = "50.09%"
 
-[node name="intro_panel" type="TextureRect" parent="ui" node_paths=PackedStringArray("bubble_1", "bubble_2", "bubble_3", "bubble_4", "next_button")]
+[node name="intro_panel" type="TextureRect" parent="ui" node_paths=PackedStringArray("bubble_1", "bubble_2", "bubble_3", "bubble_4", "transition_screen", "next_button", "intro_sound", "transition_sound")]
 z_index = 1
 layout_mode = 0
 offset_left = -2150.0
@@ -347,8 +358,11 @@ bubble_1 = NodePath("bubble_1")
 bubble_2 = NodePath("bubble_2")
 bubble_3 = NodePath("bubble_3")
 bubble_4 = NodePath("bubble_4")
+transition_screen = NodePath("../transition")
 next_button = NodePath("Button")
 delay = 3.0
+intro_sound = NodePath("../../intro_scene")
+transition_sound = NodePath("../../intro_transition")
 
 [node name="TextureRect" type="TextureRect" parent="ui/intro_panel"]
 layout_mode = 1
@@ -513,6 +527,17 @@ script = ExtResource("14_f6xml")
 [node name="Click" type="AudioStreamPlayer" parent="ui/shape_selection/Go button"]
 stream = ExtResource("16_8bw4s")
 
+[node name="transition" type="TextureRect" parent="ui"]
+visible = false
+modulate = Color(0, 0, 0, 0)
+z_index = 10
+layout_mode = 0
+offset_left = -3536.0
+offset_top = -2817.0
+offset_right = 5013.0
+offset_bottom = 2533.0
+texture = ExtResource("8_5ofum")
+
 [node name="background" type="Node2D" parent="."]
 z_index = -1
 
@@ -600,6 +625,23 @@ z_index = 1
 position = Vector2(1147, 230)
 texture = ExtResource("27_1e83p")
 
+[node name="end_scene" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("30_kvp8d")
+
+[node name="entity_action" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("31_6shi8")
+
+[node name="fish_action" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("32_ijceo")
+
+[node name="intro_scene" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("33_rm1sn")
+
+[node name="intro_transition" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("34_rjgla")
+
+[node name="sorcerer_action" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("35_64gkw")
+
 [connection signal="pressed" from="ui/outro_panel/Button2" to="." method="Restart"]
-[connection signal="pressed" from="ui/intro_panel/Button" to="ui/intro_panel" method="hide"]
 [connection signal="pressed" from="ui/shape_selection/Go button" to="ui/shape_selection/Go button" method="_on_pressed"]

@@ -13,6 +13,7 @@ extends Node2D
 @export var animate_process: bool = true
 
 @export var animated_shape: AnimatedSprite2D
+@export var sound: AudioStreamPlayer
 
 var is_busy : bool = false
 var current_shape : SS2D_Shape
@@ -95,6 +96,7 @@ func _ResetToEntrance(shape: SS2D_Shape) -> void:
 	tween.tween_interval(animation_duration)
 	tween.tween_callback(
 		func ():
+			sound.play()
 			if(animated_shape != null):
 				animated_shape.pause()
 				animated_shape.set_frame_and_progress(0, 0.0)
@@ -132,6 +134,7 @@ func _ProcessShape(shape : SS2D_Shape) -> void:
 	tween.tween_property(shape, "global_position", inside_position.global_position, slide_duration)
 	tween.tween_callback((
 		func ():
+			sound.play()
 			if(animated_shape != null):
 				animated_shape.play()
 			match current_type:

@@ -14,6 +14,7 @@ extends Node2D
 @export var circle_in: Polygon2D
 @export var circle_out: Polygon2D
 @export var presentation_parent: Node2D
+@export var end_sound: AudioStreamPlayer
 
 var bubble_list = preload("bubble_shape_list.tres")
 
@@ -114,6 +115,7 @@ func EnterMachine(index: int) -> void:
 	machines[index].shape_validated.connect(ShapeValidated)
 
 func LaunchOutro() -> void:
+	end_sound.play()
 	finished_once = true
 	outro_panel.visible = true
 	var bubble_one = bubble.duplicate()

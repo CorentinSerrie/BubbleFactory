@@ -65,7 +65,15 @@ direction = Vector3(0, -1, 0)
 spread = 57.134
 initial_velocity_min = 53.76
 initial_velocity_max = 107.52
-gravity = Vector3(0, 98, 0)
+angular_velocity_min = -178.06
+angular_velocity_max = -46.45
+orbit_velocity_min = 0.0650001
+orbit_velocity_max = 0.0650001
+radial_velocity_min = 10.75
+radial_velocity_max = 86.02
+gravity = Vector3(0, 120, 0)
+linear_accel_min = 26.88
+linear_accel_max = 26.88
 scale_min = 0.8
 scale_max = 1.2
 

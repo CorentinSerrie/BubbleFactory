@@ -1,15 +1,15 @@
-[gd_scene load_steps=24 format=3 uid="uid://bax0pcpnh1j3f"]
+[gd_scene load_steps=28 format=3 uid="uid://bax0pcpnh1j3f"]
 
 [ext_resource type="Script" path="res://machine.gd" id="1_ccy0d"]
 [ext_resource type="Script" path="res://factory.gd" id="1_h41np"]
+[ext_resource type="Texture2D" uid="uid://1g0klor74kmp" path="res://assets/Characters/fish_spritesheet.png" id="2_ipewm"]
 [ext_resource type="Texture2D" uid="uid://byhxn52kmyq6s" path="res://icon.svg" id="2_l52c2"]
-[ext_resource type="Texture2D" uid="uid://b6nhj0bdr5vn2" path="res://assets/Placeholders/fishman.png" id="2_n4ilt"]
 [ext_resource type="PackedScene" uid="uid://cpy4b4vl4jqcp" path="res://ma_nouvelle_bulle_trop_stylee.tscn" id="2_qchq2"]
 [ext_resource type="Texture2D" uid="uid://bxm3226v6vjsn" path="res://assets/Placeholders/JAM_Croquis.jpg" id="5_j8fv6"]
 [ext_resource type="Texture2D" uid="uid://oe6h2sj7cpre" path="res://assets/Placeholders/entity.png" id="6_ibmwj"]
 [ext_resource type="PackedScene" uid="uid://coa36m2fmcf08" path="res://machine_ui.tscn" id="7_s1267"]
 [ext_resource type="Texture2D" uid="uid://buf663yu2r0wt" path="res://assets/Characters/witch_spritesheet.png" id="7_su8h7"]
-[ext_resource type="Texture2D" path="res://assets/UI assets/Bubble_factory_endgame_UI_enviro.png" id="8_5ofum"]
+[ext_resource type="Texture2D" uid="uid://b756mcui1ja82" path="res://assets/UI assets/Backup UI files/Bubble_factory_endgame_UI_enviro.png" id="8_5ofum"]
 [ext_resource type="Texture2D" uid="uid://b5c2patr3dvvs" path="res://assets/Characters/Bubble_factory_endgame_UI_character.png" id="9_txvpo"]
 [ext_resource type="Texture2D" uid="uid://bhtj2tqro3asx" path="res://assets/Placeholders/Bubble_factory_startgame_UI.png" id="10_nwnh2"]
 [ext_resource type="Texture2D" uid="uid://cchbhuhu8pvhw" path="res://assets/UI assets/new_atlas_texture.tres" id="11_ysgh4"]
@@ -17,6 +17,35 @@
 [ext_resource type="Texture2D" uid="uid://ntjly63v4fui" path="res://assets/UI assets/UI_toolkit_text_buttons_no_bg.png" id="13_lgq16"]
 [ext_resource type="Script" path="res://basic_button.gd" id="14_f6xml"]
 [ext_resource type="AudioStream" uid="uid://b8laqoxdeh08p" path="res://assets/SFX/button_validation.mp3" id="16_8bw4s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8seab"]
+atlas = ExtResource("2_ipewm")
+region = Rect2(0, 0, 466, 565)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mgu8x"]
+atlas = ExtResource("2_ipewm")
+region = Rect2(466, 0, 466, 565)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w3del"]
+atlas = ExtResource("2_ipewm")
+region = Rect2(932, 0, 466, 565)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_48uso"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8seab")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mgu8x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w3del")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ep1v4"]
 atlas = ExtResource("7_su8h7")
@@ -67,9 +96,14 @@ circle_in = NodePath("SubViewport/bubble_presentation/circle_in")
 circle_out = NodePath("SubViewport/bubble_presentation/circle_out")
 presentation_parent = NodePath("SubViewport/bubble_presentation")
 
-[node name="Fishman" type="Sprite2D" parent="."]
-position = Vector2(-948, 143)
-texture = ExtResource("2_n4ilt")
+[node name="Fish" type="AnimatedSprite2D" parent="."]
+position = Vector2(-940, 162)
+sprite_frames = SubResource("SpriteFrames_48uso")
+frame_progress = 0.115955
+
+[node name="witch" type="AnimatedSprite2D" parent="."]
+position = Vector2(1170, 85)
+sprite_frames = SubResource("SpriteFrames_egutm")
 
 [node name="Entity" type="Sprite2D" parent="."]
 position = Vector2(156, -7)
@@ -78,24 +112,20 @@ texture = ExtResource("6_ibmwj")
 [node name="SS2D_Shwape_Closed2" parent="." instance=ExtResource("2_qchq2")]
 position = Vector2(-1359, 107)
 
-[node name="machine_1" type="Node2D" parent="." node_paths=PackedStringArray("entrance_position", "exit_position", "camera_position", "machine_ui")]
+[node name="machine_1" type="Node2D" parent="." node_paths=PackedStringArray("entrance_position", "exit_position", "camera_position", "machine_ui", "animated_shape")]
 position = Vector2(-927, 83)
 script = ExtResource("1_ccy0d")
 entrance_position = NodePath("entrance")
 exit_position = NodePath("exit")
 camera_position = NodePath(".")
 machine_ui = NodePath("../ui/machine_ui_1")
+animated_shape = NodePath("../Fish")
 
 [node name="entrance" type="Node2D" parent="machine_1"]
 position = Vector2(-611, -15)
 
 [node name="exit" type="Node2D" parent="machine_1"]
 position = Vector2(509, -2)
-
-[node name="Sprite2D" type="Sprite2D" parent="machine_1"]
-visible = false
-scale = Vector2(3.755, 3.755)
-texture = ExtResource("2_l52c2")
 
 [node name="camera_position" type="Node2D" parent="machine_1"]
 
@@ -128,7 +158,7 @@ exit_position = NodePath("exit")
 camera_position = NodePath(".")
 machine_ui = NodePath("../ui/machine_ui_3")
 animation_duration = 1.8
-animated_shape = NodePath("witch")
+animated_shape = NodePath("../witch")
 
 [node name="entrance" type="Node2D" parent="machine_3"]
 position = Vector2(-611, -15)
@@ -137,10 +167,6 @@ position = Vector2(-611, -15)
 position = Vector2(509, -2)
 
 [node name="camera_position" type="Node2D" parent="machine_3"]
-
-[node name="witch" type="AnimatedSprite2D" parent="machine_3"]
-position = Vector2(1, -16)
-sprite_frames = SubResource("SpriteFrames_egutm")
 
 [node name="ui" type="Control" parent="."]
 layout_mode = 3
@@ -169,6 +195,7 @@ offset_right = 2176.0
 offset_bottom = 25.0
 
 [node name="outro_panel" type="TextureRect" parent="ui"]
+visible = false
 layout_mode = 0
 offset_left = -2150.0
 offset_top = -1210.0

@@ -7,7 +7,7 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ex2cv"]
 atlas = ExtResource("4_f30hc")
-region = Rect2(3745, 5390, 2928, 781)
+region = Rect2(3584, 5112, 2792, 744)
 
 [node name="machine_ui_1" type="Control" node_paths=PackedStringArray("validate_button", "redo_button", "next_button", "strenght_slider", "angle_slider", "strenght_label", "angle_label", "type_option", "entrance_container", "exit_container", "redo_worker_bubble")]
 layout_mode = 3

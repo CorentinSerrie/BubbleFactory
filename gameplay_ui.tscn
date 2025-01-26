@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bgg16kv6o715j"]
+[gd_scene load_steps=14 format=3 uid="uid://bgg16kv6o715j"]
 
 [ext_resource type="Theme" uid="uid://b0esmft70vicl" path="res://assets/UI assets/basic_theme.tres" id="1_mcy5l"]
 [ext_resource type="Texture2D" uid="uid://ntjly63v4fui" path="res://assets/UI assets/UI_toolkit_text_buttons_no_bg.png" id="2_vii7r"]
@@ -36,6 +36,22 @@ region = Rect2(341, 2075, 1109, 492)
 [sub_resource type="AtlasTexture" id="AtlasTexture_bijki"]
 atlas = ExtResource("2_vii7r")
 region = Rect2(1733, 2075, 1109, 492)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t4sql"]
+bg_color = Color(0.370364, 0.370365, 0.370364, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_blend = true
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+expand_margin_left = 7.0
+expand_margin_top = 7.0
+expand_margin_right = 7.0
+expand_margin_bottom = 7.0
 
 [node name="Gameplay UI" type="Control"]
 layout_mode = 3
@@ -95,6 +111,18 @@ script = ExtResource("3_ca2uj")
 
 [node name="Click" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_wn1e0")
+
+[node name="HSlider" type="HSlider" parent="."]
+layout_mode = 0
+offset_left = 313.0
+offset_top = 83.0
+offset_right = 555.0
+offset_bottom = 99.0
+theme_override_styles/slider = SubResource("StyleBoxFlat_t4sql")
+min_value = -100.0
+step = 0.1
+tick_count = 1
+ticks_on_borders = true
 
 [connection signal="pressed" from="Go button" to="Go button" method="_on_pressed"]
 [connection signal="pressed" from="Start button" to="Start button" method="_on_pressed"]

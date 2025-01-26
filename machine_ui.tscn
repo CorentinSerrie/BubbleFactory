@@ -1,0 +1,106 @@
+[gd_scene load_steps=2 format=3 uid="uid://coa36m2fmcf08"]
+
+[ext_resource type="Script" path="res://machine_ui.gd" id="1_y61te"]
+
+[node name="machine_ui_1" type="Control" node_paths=PackedStringArray("validate_button", "redo_button", "strenght_slider", "angle_slider", "strenght_label", "angle_label", "ravioli_slider", "ravioli_label", "type_option")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_y61te")
+validate_button = NodePath("validate")
+redo_button = NodePath("redo")
+strenght_slider = NodePath("strength_slider")
+angle_slider = NodePath("angle_slider")
+strenght_label = NodePath("strength_value")
+angle_label = NodePath("angle_value")
+ravioli_slider = NodePath("ravioli_slider")
+ravioli_label = NodePath("ravioli_value")
+type_option = NodePath("OptionButton")
+
+[node name="validate" type="Button" parent="."]
+layout_mode = 0
+offset_left = -1148.0
+offset_top = -293.0
+offset_right = -977.0
+offset_bottom = -229.0
+text = "validate"
+
+[node name="redo" type="Button" parent="."]
+layout_mode = 0
+offset_left = -915.0
+offset_top = -291.0
+offset_right = -744.0
+offset_bottom = -227.0
+text = "redo
+"
+
+[node name="strength_slider" type="HSlider" parent="."]
+layout_mode = 0
+offset_left = -1061.0
+offset_top = 388.0
+offset_right = -805.0
+offset_bottom = 420.0
+max_value = 2.0
+step = 0.01
+
+[node name="strength_value" type="Label" parent="."]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = -1016.0
+offset_top = 427.0
+offset_right = -976.0
+offset_bottom = 450.0
+text = "0"
+
+[node name="angle_slider" type="HSlider" parent="."]
+layout_mode = 0
+offset_left = -1058.0
+offset_top = 467.0
+offset_right = -802.0
+offset_bottom = 499.0
+max_value = 180.0
+step = 0.1
+
+[node name="angle_value" type="Label" parent="."]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = -1017.0
+offset_top = 507.0
+offset_right = -977.0
+offset_bottom = 530.0
+text = "0"
+
+[node name="ravioli_slider" type="HSlider" parent="."]
+layout_mode = 0
+offset_left = -1058.0
+offset_top = 467.0
+offset_right = -802.0
+offset_bottom = 499.0
+min_value = -1.0
+max_value = 1.0
+step = 0.01
+
+[node name="ravioli_value" type="Label" parent="."]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = -1017.0
+offset_top = 507.0
+offset_right = -977.0
+offset_bottom = 530.0
+text = "0"
+
+[node name="OptionButton" type="OptionButton" parent="."]
+layout_mode = 0
+offset_left = -1215.0
+offset_top = 385.0
+offset_right = -1089.0
+offset_bottom = 449.0
+theme_override_font_sizes/font_size = 30
+selected = 0
+item_count = 3
+popup/item_0/text = "Squash"
+popup/item_1/text = "Ravioli"
+popup/item_1/id = 1
+popup/item_2/text = "Star"
+popup/item_2/id = 2

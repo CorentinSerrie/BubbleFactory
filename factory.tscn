@@ -3,11 +3,11 @@
 [ext_resource type="Script" path="res://machine.gd" id="1_ccy0d"]
 [ext_resource type="Script" path="res://factory.gd" id="1_h41np"]
 [ext_resource type="Texture2D" uid="uid://byhxn52kmyq6s" path="res://icon.svg" id="2_l52c2"]
-[ext_resource type="Texture2D" uid="uid://b6nhj0bdr5vn2" path="res://assets/fishman.png" id="2_n4ilt"]
+[ext_resource type="Texture2D" uid="uid://b6nhj0bdr5vn2" path="res://assets/Placeholders/fishman.png" id="2_n4ilt"]
 [ext_resource type="PackedScene" uid="uid://cpy4b4vl4jqcp" path="res://ma_nouvelle_bulle_trop_stylee.tscn" id="2_qchq2"]
-[ext_resource type="Script" path="res://machine_ui.gd" id="5_eqqys"]
-[ext_resource type="Texture2D" uid="uid://bxm3226v6vjsn" path="res://assets/JAM_Croquis.jpg" id="5_j8fv6"]
-[ext_resource type="Texture2D" uid="uid://oe6h2sj7cpre" path="res://assets/entity.png" id="6_ibmwj"]
+[ext_resource type="Texture2D" uid="uid://bxm3226v6vjsn" path="res://assets/Placeholders/JAM_Croquis.jpg" id="5_j8fv6"]
+[ext_resource type="Texture2D" uid="uid://oe6h2sj7cpre" path="res://assets/Placeholders/entity.png" id="6_ibmwj"]
+[ext_resource type="PackedScene" uid="uid://coa36m2fmcf08" path="res://machine_ui.tscn" id="7_s1267"]
 
 [node name="Factory" type="Node2D" node_paths=PackedStringArray("button", "machines", "bubble", "camera")]
 script = ExtResource("1_h41np")
@@ -103,203 +103,17 @@ offset_right = -1822.0
 offset_bottom = 718.0
 text = "Enter First Machine"
 
-[node name="machine_ui_1" type="Control" parent="ui" node_paths=PackedStringArray("validate_button", "redo_button", "strenght_slider", "angle_slider", "strenght_label", "angle_label")]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("5_eqqys")
-validate_button = NodePath("validate")
-redo_button = NodePath("redo")
-strenght_slider = NodePath("strength_slider")
-angle_slider = NodePath("angle_slider")
-strenght_label = NodePath("strength_value")
-angle_label = NodePath("angle_value")
+[node name="machine_ui_1" parent="ui" instance=ExtResource("7_s1267")]
 
-[node name="validate" type="Button" parent="ui/machine_ui_1"]
-layout_mode = 0
-offset_left = -1148.0
-offset_top = -293.0
-offset_right = -977.0
-offset_bottom = -229.0
-text = "validate"
+[node name="machine_ui_2" parent="ui" instance=ExtResource("7_s1267")]
+offset_left = 1085.0
+offset_top = -19.0
+offset_right = 1125.0
+offset_bottom = 21.0
 
-[node name="redo" type="Button" parent="ui/machine_ui_1"]
-layout_mode = 0
-offset_left = -915.0
-offset_top = -291.0
-offset_right = -744.0
-offset_bottom = -227.0
-text = "redo
-"
-
-[node name="strength_slider" type="HSlider" parent="ui/machine_ui_1"]
-layout_mode = 0
-offset_left = -1061.0
-offset_top = 388.0
-offset_right = -805.0
-offset_bottom = 420.0
-max_value = 2.0
-step = 0.01
-
-[node name="strength_value" type="Label" parent="ui/machine_ui_1"]
-modulate = Color(0, 0, 0, 1)
-layout_mode = 0
-offset_left = -1016.0
-offset_top = 427.0
-offset_right = -976.0
-offset_bottom = 450.0
-text = "0"
-
-[node name="angle_slider" type="HSlider" parent="ui/machine_ui_1"]
-layout_mode = 0
-offset_left = -1058.0
-offset_top = 467.0
-offset_right = -802.0
-offset_bottom = 499.0
-max_value = 180.0
-step = 0.1
-
-[node name="angle_value" type="Label" parent="ui/machine_ui_1"]
-modulate = Color(0, 0, 0, 1)
-layout_mode = 0
-offset_left = -1017.0
-offset_top = 507.0
-offset_right = -977.0
-offset_bottom = 530.0
-text = "0"
-
-[node name="machine_ui_2" type="Control" parent="ui" node_paths=PackedStringArray("validate_button", "redo_button", "strenght_slider", "angle_slider", "strenght_label", "angle_label")]
-anchors_preset = 0
-offset_left = 1067.0
-offset_top = -12.0
-offset_right = 1107.0
-offset_bottom = 28.0
-script = ExtResource("5_eqqys")
-validate_button = NodePath("validate")
-redo_button = NodePath("redo")
-strenght_slider = NodePath("strength_slider")
-angle_slider = NodePath("angle_slider")
-strenght_label = NodePath("strength_value")
-angle_label = NodePath("angle_value")
-
-[node name="validate" type="Button" parent="ui/machine_ui_2"]
-layout_mode = 0
-offset_left = -1148.0
-offset_top = -293.0
-offset_right = -977.0
-offset_bottom = -229.0
-text = "validate"
-
-[node name="redo" type="Button" parent="ui/machine_ui_2"]
-layout_mode = 0
-offset_left = -915.0
-offset_top = -291.0
-offset_right = -744.0
-offset_bottom = -227.0
-text = "redo
-"
-
-[node name="strength_slider" type="HSlider" parent="ui/machine_ui_2"]
-layout_mode = 0
-offset_left = -1061.0
-offset_top = 388.0
-offset_right = -805.0
-offset_bottom = 420.0
-max_value = 2.0
-step = 0.01
-
-[node name="strength_value" type="Label" parent="ui/machine_ui_2"]
-modulate = Color(0, 0, 0, 1)
-layout_mode = 0
-offset_left = -1016.0
-offset_top = 427.0
-offset_right = -976.0
-offset_bottom = 450.0
-text = "0"
-
-[node name="angle_slider" type="HSlider" parent="ui/machine_ui_2"]
-layout_mode = 0
-offset_left = -1058.0
-offset_top = 467.0
-offset_right = -802.0
-offset_bottom = 499.0
-max_value = 180.0
-step = 0.1
-
-[node name="angle_value" type="Label" parent="ui/machine_ui_2"]
-modulate = Color(0, 0, 0, 1)
-layout_mode = 0
-offset_left = -1017.0
-offset_top = 507.0
-offset_right = -977.0
-offset_bottom = 530.0
-text = "0"
-
-[node name="machine_ui_3" type="Control" parent="ui" node_paths=PackedStringArray("validate_button", "redo_button", "strenght_slider", "angle_slider", "strenght_label", "angle_label")]
-anchors_preset = 0
-offset_left = 2092.0
-offset_right = 2132.0
-offset_bottom = 40.0
-script = ExtResource("5_eqqys")
-validate_button = NodePath("validate")
-redo_button = NodePath("redo")
-strenght_slider = NodePath("strength_slider")
-angle_slider = NodePath("angle_slider")
-strenght_label = NodePath("strength_value")
-angle_label = NodePath("angle_value")
-
-[node name="validate" type="Button" parent="ui/machine_ui_3"]
-layout_mode = 0
-offset_left = -1148.0
-offset_top = -293.0
-offset_right = -977.0
-offset_bottom = -229.0
-text = "validate"
-
-[node name="redo" type="Button" parent="ui/machine_ui_3"]
-layout_mode = 0
-offset_left = -915.0
-offset_top = -291.0
-offset_right = -744.0
-offset_bottom = -227.0
-text = "redo
-"
-
-[node name="strength_slider" type="HSlider" parent="ui/machine_ui_3"]
-layout_mode = 0
-offset_left = -1061.0
-offset_top = 388.0
-offset_right = -805.0
-offset_bottom = 420.0
-max_value = 2.0
-step = 0.01
-
-[node name="strength_value" type="Label" parent="ui/machine_ui_3"]
-modulate = Color(0, 0, 0, 1)
-layout_mode = 0
-offset_left = -1016.0
-offset_top = 427.0
-offset_right = -976.0
-offset_bottom = 450.0
-text = "0"
-
-[node name="angle_slider" type="HSlider" parent="ui/machine_ui_3"]
-layout_mode = 0
-offset_left = -1058.0
-offset_top = 467.0
-offset_right = -802.0
-offset_bottom = 499.0
-max_value = 180.0
-step = 0.1
-
-[node name="angle_value" type="Label" parent="ui/machine_ui_3"]
-modulate = Color(0, 0, 0, 1)
-layout_mode = 0
-offset_left = -1017.0
-offset_top = 507.0
-offset_right = -977.0
-offset_bottom = 530.0
-text = "0"
+[node name="machine_ui_3" parent="ui" instance=ExtResource("7_s1267")]
+offset_left = 2136.0
+offset_right = 2176.0
 
 [node name="background" type="Sprite2D" parent="."]
 z_index = -1

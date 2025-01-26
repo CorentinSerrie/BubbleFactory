@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://bgg16kv6o715j"]
+[gd_scene load_steps=16 format=3 uid="uid://bgg16kv6o715j"]
 
 [ext_resource type="Theme" uid="uid://b0esmft70vicl" path="res://assets/UI assets/basic_theme.tres" id="1_mcy5l"]
 [ext_resource type="Texture2D" uid="uid://ntjly63v4fui" path="res://assets/UI assets/UI_toolkit_text_buttons_no_bg.png" id="2_vii7r"]
 [ext_resource type="Script" path="res://basic_button.gd" id="3_ca2uj"]
 [ext_resource type="AudioStream" uid="uid://b8laqoxdeh08p" path="res://assets/SFX/button_validation.mp3" id="4_eckhn"]
+[ext_resource type="Texture2D" uid="uid://gebbaah3nbgo" path="res://assets/Bubbles/BUBBLE3.png" id="5_ry252"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wvbbj"]
 atlas = ExtResource("2_vii7r")
@@ -52,6 +53,10 @@ expand_margin_left = 7.0
 expand_margin_top = 7.0
 expand_margin_right = 7.0
 expand_margin_bottom = 7.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ssav1"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 98, 0)
 
 [node name="Gameplay UI" type="Control"]
 layout_mode = 3
@@ -132,6 +137,13 @@ min_value = -100.0
 step = 0.1
 tick_count = 1
 ticks_on_borders = true
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(415, 229)
+emitting = false
+amount_ratio = 0.5488
+process_material = SubResource("ParticleProcessMaterial_ssav1")
+texture = ExtResource("5_ry252")
 
 [connection signal="pressed" from="Go button" to="Go button" method="_on_pressed"]
 [connection signal="pressed" from="Start button" to="Start button" method="_on_pressed"]

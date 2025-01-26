@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bax0pcpnh1j3f"]
+[gd_scene load_steps=24 format=3 uid="uid://bax0pcpnh1j3f"]
 
 [ext_resource type="Script" path="res://machine.gd" id="1_ccy0d"]
 [ext_resource type="Script" path="res://factory.gd" id="1_h41np"]
@@ -8,21 +8,40 @@
 [ext_resource type="Texture2D" uid="uid://bxm3226v6vjsn" path="res://assets/Placeholders/JAM_Croquis.jpg" id="5_j8fv6"]
 [ext_resource type="Texture2D" uid="uid://oe6h2sj7cpre" path="res://assets/Placeholders/entity.png" id="6_ibmwj"]
 [ext_resource type="PackedScene" uid="uid://coa36m2fmcf08" path="res://machine_ui.tscn" id="7_s1267"]
-[ext_resource type="Texture2D" uid="uid://b756mcui1ja82" path="res://assets/UI assets/Bubble_factory_endgame_UI_enviro.png" id="8_5ofum"]
+[ext_resource type="Texture2D" uid="uid://buf663yu2r0wt" path="res://assets/Characters/witch_spritesheet.png" id="7_su8h7"]
+[ext_resource type="Texture2D" path="res://assets/UI assets/Bubble_factory_endgame_UI_enviro.png" id="8_5ofum"]
 [ext_resource type="Texture2D" uid="uid://b5c2patr3dvvs" path="res://assets/Characters/Bubble_factory_endgame_UI_character.png" id="9_txvpo"]
 [ext_resource type="Texture2D" uid="uid://bhtj2tqro3asx" path="res://assets/Placeholders/Bubble_factory_startgame_UI.png" id="10_nwnh2"]
-[ext_resource type="Texture2D" uid="uid://cbyaqn320ppwj" path="res://assets/UI assets/UI_toolkit.png" id="11_asstd"]
+[ext_resource type="Texture2D" uid="uid://cchbhuhu8pvhw" path="res://assets/UI assets/new_atlas_texture.tres" id="11_ysgh4"]
 [ext_resource type="Theme" uid="uid://b0esmft70vicl" path="res://assets/UI assets/basic_theme.tres" id="12_oixl1"]
 [ext_resource type="Texture2D" uid="uid://ntjly63v4fui" path="res://assets/UI assets/UI_toolkit_text_buttons_no_bg.png" id="13_lgq16"]
 [ext_resource type="Script" path="res://basic_button.gd" id="14_f6xml"]
 [ext_resource type="AudioStream" uid="uid://b8laqoxdeh08p" path="res://assets/SFX/button_validation.mp3" id="16_8bw4s"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ep1v4"]
+atlas = ExtResource("7_su8h7")
+region = Rect2(0, 0, 698, 889)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jgmbu"]
+atlas = ExtResource("7_su8h7")
+region = Rect2(698, 0, 698, 889)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_egutm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ep1v4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jgmbu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [sub_resource type="ViewportTexture" id="ViewportTexture_p6sn5"]
 viewport_path = NodePath("SubViewport")
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_354c2"]
-atlas = ExtResource("11_asstd")
-region = Rect2(360, 272, 1120, 512)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g1le5"]
 atlas = ExtResource("13_lgq16")
@@ -101,13 +120,15 @@ texture = ExtResource("2_l52c2")
 
 [node name="camera_position" type="Node2D" parent="machine_2"]
 
-[node name="machine_3" type="Node2D" parent="." node_paths=PackedStringArray("entrance_position", "exit_position", "camera_position", "machine_ui")]
+[node name="machine_3" type="Node2D" parent="." node_paths=PackedStringArray("entrance_position", "exit_position", "camera_position", "machine_ui", "animated_shape")]
 position = Vector2(1169, 101)
 script = ExtResource("1_ccy0d")
 entrance_position = NodePath("entrance")
 exit_position = NodePath("exit")
 camera_position = NodePath(".")
 machine_ui = NodePath("../ui/machine_ui_3")
+animation_duration = 1.8
+animated_shape = NodePath("witch")
 
 [node name="entrance" type="Node2D" parent="machine_3"]
 position = Vector2(-611, -15)
@@ -115,11 +136,11 @@ position = Vector2(-611, -15)
 [node name="exit" type="Node2D" parent="machine_3"]
 position = Vector2(509, -2)
 
-[node name="Sprite2D" type="Sprite2D" parent="machine_3"]
-scale = Vector2(3.755, 3.755)
-texture = ExtResource("2_l52c2")
-
 [node name="camera_position" type="Node2D" parent="machine_3"]
+
+[node name="witch" type="AnimatedSprite2D" parent="machine_3"]
+position = Vector2(1, -16)
+sprite_frames = SubResource("SpriteFrames_egutm")
 
 [node name="ui" type="Control" parent="."]
 layout_mode = 3
@@ -130,6 +151,10 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="machine_ui_1" parent="ui" instance=ExtResource("7_s1267")]
+offset_left = 58.0
+offset_top = -10.0
+offset_right = 98.0
+offset_bottom = 30.0
 
 [node name="machine_ui_2" parent="ui" instance=ExtResource("7_s1267")]
 offset_left = 1085.0
@@ -144,7 +169,6 @@ offset_right = 2176.0
 offset_bottom = 25.0
 
 [node name="outro_panel" type="TextureRect" parent="ui"]
-visible = false
 layout_mode = 0
 offset_left = -2150.0
 offset_top = -1210.0
@@ -190,7 +214,6 @@ texture = SubResource("ViewportTexture_p6sn5")
 stretch_mode = 5
 
 [node name="intro_panel" type="TextureRect" parent="ui"]
-visible = false
 layout_mode = 0
 offset_left = -2150.0
 offset_top = -1210.0
@@ -208,25 +231,28 @@ theme_override_font_sizes/font_size = 100
 text = "Next"
 
 [node name="shape_selection" type="TextureRect" parent="ui"]
+visible = false
 layout_mode = 0
 offset_left = -1472.0
 offset_top = 469.0
-offset_right = 1629.0
-offset_bottom = 1132.0
-texture = SubResource("AtlasTexture_354c2")
+offset_right = 1483.0
+offset_bottom = 1190.0
+texture = ExtResource("11_ysgh4")
+expand_mode = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ui/shape_selection"]
 layout_mode = 0
-offset_left = 221.0
-offset_top = 34.0
-offset_right = 2891.0
-offset_bottom = 572.0
+offset_left = 255.0
+offset_top = 81.0
+offset_right = 2925.0
+offset_bottom = 619.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ui/shape_selection/VBoxContainer"]
 layout_mode = 2
 
 [node name="Label" type="Label" parent="ui/shape_selection/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 120
 text = "Let's start with a "
 
@@ -239,11 +265,13 @@ popup/item_0/text = "first"
 
 [node name="Label2" type="Label" parent="ui/shape_selection/VBoxContainer/HBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 120
 text = "  shaped bubble..."
 
 [node name="Label3" type="Label" parent="ui/shape_selection/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 120
 text = "We'll see how it goes"
 

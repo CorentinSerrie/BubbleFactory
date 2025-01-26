@@ -3,17 +3,15 @@ extends Control
 
 @export var validate_button: Button
 @export var redo_button: Button
+@export var next_button: Button
 @export var strenght_slider: Slider
 @export var angle_slider: Slider
 @export var strenght_label: Label
 @export var angle_label: Label
-@export var ravioli_slider: Slider
-@export var ravioli_label: Label
 @export var type_option: OptionButton
-@export var star_angle_slider: Slider
-@export var star_angle_label: Label
-@export var star_strength_slider: Slider
-@export var star_strength_label: Label
+@export var entrance_container: Control
+@export var exit_container: Control
+@export var redo_worker_bubble: Control
 
 var machine: BubbleMachine
 
@@ -32,35 +30,34 @@ enum MachineType {
 
 
 func _ready():
-	strenght_slider.value_changed.connect(func(value): strenght_label.text = "strength: " + str(value))
-	angle_slider.value_changed.connect(func(value): angle_label.text = "angle: " + str(value))
-	ravioli_slider.value_changed.connect(func(value): ravioli_label.text = "angle: " + str(value))
+	visible = false
+	strenght_slider.value_changed.connect(func(value): strenght_label.text = str(value))
+	angle_slider.value_changed.connect(func(value): angle_label.text = str(value))
 	type_option.item_selected.connect(
 		func(value): 
 			machine.current_type = value
 			OnMachineTypeChanged()
-	)	
-	star_strength_slider.value_changed.connect(func(value): star_strength_label.text = "strength: " + str(value))
-	star_angle_slider.value_changed.connect(func(value): star_angle_label.text = "angle: " + str(value))
+	)
 	pass
 
 func OnBubblePositionChanged() -> void:
 	match machine.current_position:
 		BubblePosition.entrance:
 			visible = true
-			_HideAll()
-			validate_button.visible = true
+			entrance_container.visible = true
+			exit_container.visible = false
+			redo_worker_bubble.visible = false
 			OnMachineTypeChanged()
 		BubblePosition.inside:
-			visible = true
-			_HideAll()
+			visible = false
 		BubblePosition.exit:
 			var isShapeValid: bool = machine.IsShapeValid(machine.current_shape)
 			visible = true
-			_HideAll()
-			validate_button.visible = isShapeValid
-			redo_button.visible = true
-			OnMachineTypeChanged()			
+			entrance_container.visible = false
+			exit_container.visible = true
+			next_button.visible = isShapeValid
+			redo_worker_bubble.visible = !isShapeValid
+			OnMachineTypeChanged()
 		BubblePosition.out:
 			visible = false
 		pass
@@ -70,54 +67,29 @@ func OnMachineTypeChanged() -> void:
 		return
 	match machine.current_type:
 		MachineType.SQUASH_STRETCH:
-			strenght_slider.visible = true
-			angle_slider.visible = true
-			strenght_label.visible = true
-			angle_label.visible = true
-			ravioli_slider.visible = false
-			ravioli_label.visible = false
-			star_angle_slider.visible = false
-			star_angle_label.visible = false
-			star_strength_slider.visible = false
-			star_strength_label.visible = false
+			angle_slider.min_value = -90
+			angle_slider.max_value = 90
+			angle_slider.value = 0
+			strenght_slider.min_value = 0
+			strenght_slider.max_value = 2
+			strenght_slider.value = 1
+			
 			pass
 		MachineType.RAVIOLI:
-			strenght_slider.visible = false
-			angle_slider.visible = false
-			strenght_label.visible = false
-			angle_label.visible = false
-			ravioli_slider.visible = true
-			ravioli_label.visible = true
-			star_angle_slider.visible = false
-			star_angle_label.visible = false
-			star_strength_slider.visible = false
-			star_strength_label.visible = false
+			angle_slider.min_value = -90
+			angle_slider.max_value = 90
+			angle_slider.value = 0
+			strenght_slider.min_value = 0
+			strenght_slider.max_value = 2
+			strenght_slider.value = 1
+			pass
 		MachineType.STAR:
-			strenght_slider.visible = false
-			angle_slider.visible = false
-			strenght_label.visible = false
-			angle_label.visible = false
-			ravioli_slider.visible = false
-			ravioli_label.visible = false
-			star_angle_slider.visible = true
-			star_angle_label.visible = true
-			star_strength_slider.visible = true
-			star_strength_label.visible = true
+			angle_slider.min_value = 0
+			angle_slider.max_value = 90
+			angle_slider.value = 0
+			strenght_slider.min_value = -1
+			strenght_slider.max_value = 1
+			strenght_slider.value = 0
 			pass
 
 	pass
-
-
-func _HideAll() -> void:
-	validate_button.visible = false
-	redo_button.visible = false
-	strenght_slider.visible = false
-	angle_slider.visible = false
-	strenght_label.visible = false
-	angle_label.visible = false
-	ravioli_slider.visible = false
-	ravioli_label.visible = false
-	star_angle_slider.visible = false
-	star_angle_label.visible = false
-	star_strength_slider.visible = false
-	star_strength_label.visible = false

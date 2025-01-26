@@ -1,147 +1,180 @@
-[gd_scene load_steps=2 format=3 uid="uid://coa36m2fmcf08"]
+[gd_scene load_steps=6 format=3 uid="uid://coa36m2fmcf08"]
 
+[ext_resource type="Theme" uid="uid://b0esmft70vicl" path="res://assets/UI assets/basic_theme.tres" id="1_hbmc2"]
 [ext_resource type="Script" path="res://machine_ui.gd" id="1_y61te"]
+[ext_resource type="Texture2D" uid="uid://cchbhuhu8pvhw" path="res://assets/UI assets/new_atlas_texture.tres" id="3_4ajt6"]
+[ext_resource type="Texture2D" uid="uid://bfwl5cg0mkfos" path="res://assets/UI assets/UI_toolkit_2_without_background.png" id="4_f30hc"]
 
-[node name="machine_ui_1" type="Control" node_paths=PackedStringArray("validate_button", "redo_button", "strenght_slider", "angle_slider", "strenght_label", "angle_label", "ravioli_slider", "ravioli_label", "type_option", "star_angle_slider", "star_angle_label", "star_strength_slider", "star_strength_label")]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ex2cv"]
+atlas = ExtResource("4_f30hc")
+region = Rect2(3745, 5390, 2928, 781)
+
+[node name="machine_ui_1" type="Control" node_paths=PackedStringArray("validate_button", "redo_button", "next_button", "strenght_slider", "angle_slider", "strenght_label", "angle_label", "type_option", "entrance_container", "exit_container", "redo_worker_bubble")]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+theme = ExtResource("1_hbmc2")
 script = ExtResource("1_y61te")
-validate_button = NodePath("validate")
-redo_button = NodePath("redo")
-strenght_slider = NodePath("strength_slider")
-angle_slider = NodePath("angle_slider")
-strenght_label = NodePath("strength_value")
-angle_label = NodePath("angle_value")
-ravioli_slider = NodePath("ravioli_slider")
-ravioli_label = NodePath("ravioli_value")
-type_option = NodePath("OptionButton")
-star_angle_slider = NodePath("star_angle_slider")
-star_angle_label = NodePath("star_angle_value")
-star_strength_slider = NodePath("star_strength_slider")
-star_strength_label = NodePath("star_strength_value")
+validate_button = NodePath("squash_bubble/validate")
+redo_button = NodePath("exit/reset")
+next_button = NodePath("exit/next")
+strenght_slider = NodePath("squash_bubble/strength_slider")
+angle_slider = NodePath("squash_bubble/angle_slider")
+strenght_label = NodePath("squash_bubble/VBoxContainer/HBoxContainer2/strength_value")
+angle_label = NodePath("squash_bubble/VBoxContainer/HBoxContainer3/angle_value")
+type_option = NodePath("squash_bubble/VBoxContainer/HBoxContainer/OptionButton")
+entrance_container = NodePath("squash_bubble")
+exit_container = NodePath("exit")
+redo_worker_bubble = NodePath("TextureRect")
 
-[node name="validate" type="Button" parent="."]
-layout_mode = 0
-offset_left = -1148.0
-offset_top = -293.0
-offset_right = -977.0
-offset_bottom = -229.0
-text = "validate"
+[node name="exit" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="redo" type="Button" parent="."]
+[node name="reset" type="Button" parent="exit"]
 layout_mode = 0
-offset_left = -915.0
-offset_top = -291.0
-offset_right = -744.0
-offset_bottom = -227.0
-text = "redo
+offset_left = -1211.0
+offset_top = 484.0
+offset_right = -1040.0
+offset_bottom = 548.0
+theme_override_font_sizes/font_size = 40
+text = "reset
 "
 
-[node name="strength_slider" type="HSlider" parent="."]
+[node name="next" type="Button" parent="exit"]
 layout_mode = 0
-offset_left = -1061.0
-offset_top = 388.0
-offset_right = -805.0
-offset_bottom = 420.0
+offset_left = -935.0
+offset_top = 487.0
+offset_right = -764.0
+offset_bottom = 551.0
+theme_override_font_sizes/font_size = 40
+text = "next
+"
+
+[node name="squash_bubble" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -1511.0
+offset_top = 278.0
+offset_right = -430.0
+offset_bottom = 657.0
+texture = ExtResource("3_4ajt6")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="squash_bubble"]
+layout_mode = 0
+offset_left = 83.0
+offset_top = 24.0
+offset_right = 920.0
+offset_bottom = 284.0
+theme_override_constants/separation = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="squash_bubble/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="squash_bubble/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 60
+text = "Hey Bob ! I'll need you to "
+
+[node name="OptionButton" type="OptionButton" parent="squash_bubble/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+selected = 0
+item_count = 3
+popup/item_0/text = "  Squashify  "
+popup/item_1/text = "  Raviolify  "
+popup/item_1/id = 1
+popup/item_2/text = "  Starify  "
+popup/item_2/id = 2
+
+[node name="Label2" type="Label" parent="squash_bubble/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 60
+text = " that"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="squash_bubble/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="squash_bubble/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 60
+text = "  bubble with a strenght of "
+
+[node name="strength_value" type="Label" parent="squash_bubble/VBoxContainer/HBoxContainer2"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 80
+text = "0"
+
+[node name="Label2" type="Label" parent="squash_bubble/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 60
+text = "  and an"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="squash_bubble/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="squash_bubble/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 60
+text = "    angle of "
+
+[node name="angle_value" type="Label" parent="squash_bubble/VBoxContainer/HBoxContainer3"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 80
+text = "0"
+
+[node name="strength_slider" type="HSlider" parent="squash_bubble"]
+layout_mode = 0
+offset_left = 611.0
+offset_top = 193.0
+offset_right = 752.0
+offset_bottom = 225.0
 max_value = 2.0
 step = 0.01
 
-[node name="strength_value" type="Label" parent="."]
-modulate = Color(0, 0, 0, 1)
+[node name="angle_slider" type="HSlider" parent="squash_bubble"]
 layout_mode = 0
-offset_left = -1016.0
-offset_top = 427.0
-offset_right = -976.0
-offset_bottom = 450.0
-text = "0"
-
-[node name="angle_slider" type="HSlider" parent="."]
-layout_mode = 0
-offset_left = -1058.0
-offset_top = 467.0
-offset_right = -802.0
-offset_bottom = 499.0
+offset_left = 298.0
+offset_top = 258.0
+offset_right = 428.0
+offset_bottom = 290.0
 max_value = 180.0
 step = 0.1
 
-[node name="angle_value" type="Label" parent="."]
-modulate = Color(0, 0, 0, 1)
+[node name="validate" type="Button" parent="squash_bubble"]
 layout_mode = 0
-offset_left = -1017.0
-offset_top = 507.0
-offset_right = -977.0
-offset_bottom = 530.0
-text = "0"
+offset_left = 887.0
+offset_top = 239.0
+offset_right = 1058.0
+offset_bottom = 303.0
+theme_override_font_sizes/font_size = 40
+text = "validate"
 
-[node name="ravioli_slider" type="HSlider" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = -1058.0
-offset_top = 467.0
-offset_right = -802.0
-offset_bottom = 499.0
-min_value = -1.0
-max_value = 1.0
-step = 0.01
+offset_left = -1500.0
+offset_top = -420.0
+offset_right = -445.0
+offset_bottom = -12.0
+texture = SubResource("AtlasTexture_ex2cv")
+expand_mode = 1
 
-[node name="ravioli_value" type="Label" parent="."]
-modulate = Color(0, 0, 0, 1)
+[node name="Label" type="Label" parent="TextureRect"]
 layout_mode = 0
-offset_left = -1017.0
-offset_top = 507.0
-offset_right = -977.0
-offset_bottom = 530.0
-text = "0"
-
-[node name="OptionButton" type="OptionButton" parent="."]
-layout_mode = 0
-offset_left = -1215.0
-offset_top = 385.0
-offset_right = -1089.0
-offset_bottom = 449.0
-theme_override_font_sizes/font_size = 30
-selected = 0
-item_count = 3
-popup/item_0/text = "Squash"
-popup/item_1/text = "Ravioli"
-popup/item_1/id = 1
-popup/item_2/text = "Star"
-popup/item_2/id = 2
-
-[node name="star_strength_slider" type="HSlider" parent="."]
-layout_mode = 0
-offset_left = -1061.0
-offset_top = 388.0
-offset_right = -805.0
-offset_bottom = 420.0
-min_value = -1.0
-max_value = 1.0
-step = 0.01
-
-[node name="star_strength_value" type="Label" parent="."]
-modulate = Color(0, 0, 0, 1)
-layout_mode = 0
-offset_left = -1016.0
-offset_top = 427.0
-offset_right = -976.0
-offset_bottom = 450.0
-text = "0"
-
-[node name="star_angle_slider" type="HSlider" parent="."]
-layout_mode = 0
-offset_left = -1058.0
-offset_top = 467.0
-offset_right = -802.0
-offset_bottom = 499.0
-max_value = 180.0
-step = 0.1
-
-[node name="star_angle_value" type="Label" parent="."]
-modulate = Color(0, 0, 0, 1)
-layout_mode = 0
-offset_left = -1017.0
-offset_top = 507.0
-offset_right = -977.0
-offset_bottom = 530.0
-text = "0"
+offset_left = 150.0
+offset_top = 59.0
+offset_right = 997.0
+offset_bottom = 222.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 80
+text = "Hmmm Chief ? These parameters don't work ..."
+autowrap_mode = 2

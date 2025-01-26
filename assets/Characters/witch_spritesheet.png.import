@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cwn13j1is0v54"
-path="res://.godot/imported/Bubble_factory_startgame_UI_characters.png-a4e5cd3a8ab5df101822f7ad23b8977d.ctex"
+uid="uid://buf663yu2r0wt"
+path="res://.godot/imported/witch_spritesheet.png-ad30b9f9ce0e40960bc904dd4d957bc6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Characters/Bubble_factory_startgame_UI_characters.png"
-dest_files=["res://.godot/imported/Bubble_factory_startgame_UI_characters.png-a4e5cd3a8ab5df101822f7ad23b8977d.ctex"]
+source_file="res://assets/Characters/witch_spritesheet.png"
+dest_files=["res://.godot/imported/witch_spritesheet.png-ad30b9f9ce0e40960bc904dd4d957bc6.ctex"]
 
 [params]
 

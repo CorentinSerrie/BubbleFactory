@@ -1,7 +1,16 @@
-[gd_resource type="Theme" load_steps=15 format=3 uid="uid://b0esmft70vicl"]
+[gd_resource type="Theme" load_steps=17 format=3 uid="uid://b0esmft70vicl"]
 
+[ext_resource type="Texture2D" uid="uid://dgrt5i50ag5oo" path="res://assets/UI assets/UI_toolkit_1_without_background.png" id="1_ageie"]
 [ext_resource type="Texture2D" uid="uid://de8udtf2nbrx6" path="res://assets/UI assets/Backup UI files/UI_toolkit_no_text.png" id="1_nqphi"]
 [ext_resource type="FontFile" uid="uid://bammjxppl7tbg" path="res://assets/UI assets/Enchant.otf" id="1_rmjfe"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_23y41"]
+content_margin_left = 1.0
+content_margin_top = 1.0
+content_margin_right = 1.0
+content_margin_bottom = 11.0
+texture = ExtResource("1_ageie")
+region_rect = Rect2(703, 897, 2171, 962)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fjybf"]
 content_margin_left = 1.0
@@ -116,7 +125,7 @@ Button/constants/outline_size = 0
 Button/font_sizes/font_size = 23
 Button/styles/disabled = null
 Button/styles/focus = null
-Button/styles/hover = null
+Button/styles/hover = SubResource("StyleBoxTexture_23y41")
 Button/styles/normal = SubResource("StyleBoxTexture_fjybf")
 Button/styles/pressed = SubResource("StyleBoxTexture_wq885")
 HSlider/constants/center_grabber = 0

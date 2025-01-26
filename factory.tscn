@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://b5c2patr3dvvs" path="res://assets/Characters/Bubble_factory_endgame_UI_character.png" id="9_txvpo"]
 [ext_resource type="Texture2D" uid="uid://c1xs6d5vesi1c" path="res://assets/Background/JAM_01_flou.jpg" id="9_v71cr"]
 [ext_resource type="Texture2D" uid="uid://dux6t50owq3qf" path="res://assets/UI assets/ppt_presentation_without_background.png" id="10_ivp1d"]
-[ext_resource type="Texture2D" path="res://assets/UI assets/new_atlas_texture.tres" id="11_ysgh4"]
+[ext_resource type="Texture2D" uid="uid://bscs7wd0ya8jp" path="res://assets/UI assets/new_atlas_texture.tres" id="11_ysgh4"]
 [ext_resource type="Theme" uid="uid://b0esmft70vicl" path="res://assets/UI assets/basic_theme.tres" id="12_oixl1"]
 [ext_resource type="Texture2D" uid="uid://bfwl5cg0mkfos" path="res://assets/UI assets/UI_toolkit_2_without_background.png" id="12_x3nxg"]
 [ext_resource type="Texture2D" uid="uid://ntjly63v4fui" path="res://assets/UI assets/UI_toolkit_text_buttons_no_bg.png" id="13_lgq16"]

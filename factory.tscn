@@ -1,11 +1,10 @@
-[gd_scene load_steps=28 format=3 uid="uid://bax0pcpnh1j3f"]
+[gd_scene load_steps=35 format=3 uid="uid://bax0pcpnh1j3f"]
 
 [ext_resource type="Script" path="res://machine.gd" id="1_ccy0d"]
 [ext_resource type="Script" path="res://factory.gd" id="1_h41np"]
 [ext_resource type="Texture2D" uid="uid://1g0klor74kmp" path="res://assets/Characters/fish_spritesheet.png" id="2_ipewm"]
 [ext_resource type="Texture2D" uid="uid://byhxn52kmyq6s" path="res://icon.svg" id="2_l52c2"]
 [ext_resource type="PackedScene" uid="uid://cpy4b4vl4jqcp" path="res://ma_nouvelle_bulle_trop_stylee.tscn" id="2_qchq2"]
-[ext_resource type="Texture2D" uid="uid://bxm3226v6vjsn" path="res://assets/Placeholders/JAM_Croquis.jpg" id="5_j8fv6"]
 [ext_resource type="Texture2D" uid="uid://oe6h2sj7cpre" path="res://assets/Placeholders/entity.png" id="6_ibmwj"]
 [ext_resource type="PackedScene" uid="uid://coa36m2fmcf08" path="res://machine_ui.tscn" id="7_s1267"]
 [ext_resource type="Texture2D" uid="uid://buf663yu2r0wt" path="res://assets/Characters/witch_spritesheet.png" id="7_su8h7"]
@@ -17,6 +16,14 @@
 [ext_resource type="Texture2D" uid="uid://ntjly63v4fui" path="res://assets/UI assets/UI_toolkit_text_buttons_no_bg.png" id="13_lgq16"]
 [ext_resource type="Script" path="res://basic_button.gd" id="14_f6xml"]
 [ext_resource type="AudioStream" uid="uid://b8laqoxdeh08p" path="res://assets/SFX/button_validation.mp3" id="16_8bw4s"]
+[ext_resource type="Texture2D" uid="uid://n2h3rsogtyni" path="res://assets/Background/JAM_01_01.png" id="17_o5y6b"]
+[ext_resource type="Texture2D" uid="uid://ctr5mrm6531g7" path="res://assets/Background/JAM_01_02.png" id="18_lwpcm"]
+[ext_resource type="Texture2D" uid="uid://bu7ml0bmkaqrq" path="res://assets/Background/JAM_01_03.png" id="19_ucsw1"]
+[ext_resource type="Texture2D" uid="uid://ib1hsmy6ulwp" path="res://assets/Background/JAM_01_04.png" id="20_pnigh"]
+[ext_resource type="Texture2D" uid="uid://c1l0mp1xuck77" path="res://assets/Background/JAM_01_05.png" id="21_r36ts"]
+[ext_resource type="Texture2D" uid="uid://cj8u05tpix0de" path="res://assets/Background/JAM_01_06.png" id="22_c6ah6"]
+[ext_resource type="Texture2D" uid="uid://cppvp2mbx6tje" path="res://assets/Background/JAM_01_07.png" id="23_lo2ci"]
+[ext_resource type="Texture2D" uid="uid://bfrd2ao1kbys3" path="res://assets/Background/JAM_01_08.png" id="24_meiks"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8seab"]
 atlas = ExtResource("2_ipewm")
@@ -97,12 +104,12 @@ circle_out = NodePath("SubViewport/bubble_presentation/circle_out")
 presentation_parent = NodePath("SubViewport/bubble_presentation")
 
 [node name="Fish" type="AnimatedSprite2D" parent="."]
-position = Vector2(-940, 162)
+position = Vector2(-935, 103.5)
 sprite_frames = SubResource("SpriteFrames_48uso")
 frame_progress = 0.115955
 
 [node name="witch" type="AnimatedSprite2D" parent="."]
-position = Vector2(1170, 85)
+position = Vector2(1145, -19)
 sprite_frames = SubResource("SpriteFrames_egutm")
 
 [node name="Entity" type="Sprite2D" parent="."]
@@ -117,7 +124,7 @@ position = Vector2(-927, 83)
 script = ExtResource("1_ccy0d")
 entrance_position = NodePath("entrance")
 exit_position = NodePath("exit")
-camera_position = NodePath(".")
+camera_position = NodePath("camera_position")
 machine_ui = NodePath("../ui/machine_ui_1")
 animated_shape = NodePath("../Fish")
 
@@ -128,13 +135,14 @@ position = Vector2(-611, -15)
 position = Vector2(509, -2)
 
 [node name="camera_position" type="Node2D" parent="machine_1"]
+position = Vector2(0, -143)
 
 [node name="machine_2" type="Node2D" parent="." node_paths=PackedStringArray("entrance_position", "exit_position", "camera_position", "machine_ui")]
 position = Vector2(137, 91)
 script = ExtResource("1_ccy0d")
 entrance_position = NodePath("entrance")
 exit_position = NodePath("exit")
-camera_position = NodePath(".")
+camera_position = NodePath("camera_position")
 machine_ui = NodePath("../ui/machine_ui_2")
 
 [node name="entrance" type="Node2D" parent="machine_2"]
@@ -149,13 +157,14 @@ scale = Vector2(3.755, 3.755)
 texture = ExtResource("2_l52c2")
 
 [node name="camera_position" type="Node2D" parent="machine_2"]
+position = Vector2(0, -143)
 
 [node name="machine_3" type="Node2D" parent="." node_paths=PackedStringArray("entrance_position", "exit_position", "camera_position", "machine_ui", "animated_shape")]
 position = Vector2(1169, 101)
 script = ExtResource("1_ccy0d")
 entrance_position = NodePath("entrance")
 exit_position = NodePath("exit")
-camera_position = NodePath(".")
+camera_position = NodePath("camera_position")
 machine_ui = NodePath("../ui/machine_ui_3")
 animation_duration = 1.8
 animated_shape = NodePath("../witch")
@@ -167,8 +176,10 @@ position = Vector2(-611, -15)
 position = Vector2(509, -2)
 
 [node name="camera_position" type="Node2D" parent="machine_3"]
+position = Vector2(0, -143)
 
 [node name="ui" type="Control" parent="."]
+z_index = 2
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -178,21 +189,21 @@ grow_vertical = 2
 
 [node name="machine_ui_1" parent="ui" instance=ExtResource("7_s1267")]
 offset_left = 58.0
-offset_top = -10.0
+offset_top = 1.0
 offset_right = 98.0
-offset_bottom = 30.0
+offset_bottom = 41.0
 
 [node name="machine_ui_2" parent="ui" instance=ExtResource("7_s1267")]
 offset_left = 1085.0
-offset_top = -19.0
+offset_top = -8.0
 offset_right = 1125.0
-offset_bottom = 21.0
+offset_bottom = 32.0
 
 [node name="machine_ui_3" parent="ui" instance=ExtResource("7_s1267")]
 offset_left = 2136.0
-offset_top = -15.0
+offset_top = -4.0
 offset_right = 2176.0
-offset_bottom = 25.0
+offset_bottom = 36.0
 
 [node name="outro_panel" type="TextureRect" parent="ui"]
 visible = false
@@ -266,6 +277,7 @@ offset_left = -1472.0
 offset_top = 469.0
 offset_right = 1483.0
 offset_bottom = 1190.0
+theme = ExtResource("12_oixl1")
 texture = ExtResource("11_ysgh4")
 expand_mode = 1
 
@@ -282,26 +294,26 @@ layout_mode = 2
 [node name="Label" type="Label" parent="ui/shape_selection/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 120
+theme_override_font_sizes/font_size = 130
 text = "Let's start with a "
 
 [node name="shape_picker" type="OptionButton" parent="ui/shape_selection/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 120
+theme_override_font_sizes/font_size = 140
 selected = 0
 item_count = 1
-popup/item_0/text = "first"
+popup/item_0/text = "  first  "
 
 [node name="Label2" type="Label" parent="ui/shape_selection/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 120
+theme_override_font_sizes/font_size = 130
 text = "  shaped bubble..."
 
 [node name="Label3" type="Label" parent="ui/shape_selection/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 120
+theme_override_font_sizes/font_size = 130
 text = "We'll see how it goes"
 
 [node name="Go button" type="TextureButton" parent="ui/shape_selection"]
@@ -322,9 +334,38 @@ script = ExtResource("14_f6xml")
 [node name="Click" type="AudioStreamPlayer" parent="ui/shape_selection/Go button"]
 stream = ExtResource("16_8bw4s")
 
-[node name="background" type="Sprite2D" parent="."]
+[node name="background" type="Node2D" parent="."]
 z_index = -1
-texture = ExtResource("5_j8fv6")
+
+[node name="Jam0101" type="Sprite2D" parent="background"]
+texture = ExtResource("17_o5y6b")
+
+[node name="Jam0102" type="Sprite2D" parent="background"]
+texture = ExtResource("18_lwpcm")
+
+[node name="Jam0103" type="Sprite2D" parent="background"]
+z_index = 2
+texture = ExtResource("19_ucsw1")
+
+[node name="Jam0104" type="Sprite2D" parent="background"]
+z_index = 2
+texture = ExtResource("20_pnigh")
+
+[node name="Jam0105" type="Sprite2D" parent="background"]
+z_index = 2
+texture = ExtResource("21_r36ts")
+
+[node name="Jam0106" type="Sprite2D" parent="background"]
+z_index = 2
+texture = ExtResource("22_c6ah6")
+
+[node name="Jam0107" type="Sprite2D" parent="background"]
+z_index = 2
+texture = ExtResource("23_lo2ci")
+
+[node name="Jam0108" type="Sprite2D" parent="background"]
+z_index = 2
+texture = ExtResource("24_meiks")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.446, 0.446)

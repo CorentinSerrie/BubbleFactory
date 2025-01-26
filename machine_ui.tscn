@@ -30,8 +30,10 @@ redo_worker_bubble = NodePath("TextureRect")
 
 [node name="exit" type="Control" parent="."]
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -4.0
+offset_top = -162.0
+offset_right = 36.0
+offset_bottom = -122.0
 
 [node name="reset" type="Button" parent="exit"]
 layout_mode = 0
@@ -55,10 +57,10 @@ text = "next
 
 [node name="squash_bubble" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = -1511.0
-offset_top = 278.0
-offset_right = -430.0
-offset_bottom = 657.0
+offset_left = -1520.0
+offset_top = 152.0
+offset_right = -439.0
+offset_bottom = 531.0
 texture = ExtResource("3_4ajt6")
 expand_mode = 1
 
@@ -161,10 +163,10 @@ text = "validate"
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = -1500.0
-offset_top = -420.0
-offset_right = -445.0
-offset_bottom = -12.0
+offset_left = -1254.0
+offset_top = -604.0
+offset_right = -199.0
+offset_bottom = -196.0
 texture = SubResource("AtlasTexture_ex2cv")
 expand_mode = 1
 

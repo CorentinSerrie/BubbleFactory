@@ -52,7 +52,7 @@ func Restart() -> void:
 func _SetShapeOptions() -> void:
 	shape_picker.clear()
 	for i in range(0, bubble_list.names.size()):
-		shape_picker.add_item(bubble_list.names[i], i)
+		shape_picker.add_item("  " + bubble_list.names[i] + "  ", i)
 
 func _StartWithShape(index: int) -> void:
 	print(bubble_list)

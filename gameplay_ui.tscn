@@ -3,7 +3,7 @@
 [ext_resource type="Theme" uid="uid://b0esmft70vicl" path="res://assets/UI assets/basic_theme.tres" id="1_mcy5l"]
 [ext_resource type="Texture2D" uid="uid://ntjly63v4fui" path="res://assets/UI assets/UI_toolkit_text_buttons_no_bg.png" id="2_vii7r"]
 [ext_resource type="Script" path="res://basic_button.gd" id="3_ca2uj"]
-[ext_resource type="AudioStream" uid="uid://c074rln1a4rsf" path="res://assets/Placeholders/click-234708.mp3" id="4_wn1e0"]
+[ext_resource type="AudioStream" uid="uid://b8laqoxdeh08p" path="res://assets/SFX/button_validation.mp3" id="4_eckhn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wvbbj"]
 atlas = ExtResource("2_vii7r")
@@ -97,7 +97,7 @@ ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("3_ca2uj")
 
-[node name="TextureButton" type="TextureButton" parent="."]
+[node name="Next Button" type="TextureButton" parent="."]
 layout_mode = 0
 offset_left = 64.0
 offset_top = 448.0
@@ -110,7 +110,7 @@ stretch_mode = 0
 script = ExtResource("3_ca2uj")
 
 [node name="Click" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_wn1e0")
+stream = ExtResource("4_eckhn")
 
 [node name="HSlider" type="HSlider" parent="."]
 layout_mode = 0
@@ -127,4 +127,4 @@ ticks_on_borders = true
 [connection signal="pressed" from="Go button" to="Go button" method="_on_pressed"]
 [connection signal="pressed" from="Start button" to="Start button" method="_on_pressed"]
 [connection signal="pressed" from="Reset button" to="Reset button" method="_on_pressed"]
-[connection signal="pressed" from="TextureButton" to="TextureButton" method="_on_pressed"]
+[connection signal="pressed" from="Next Button" to="Next Button" method="_on_pressed"]

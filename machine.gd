@@ -7,8 +7,11 @@ extends Node2D
 @export var machine_ui: Control
 
 @export var slide_duration : float = 1
+@export var animation_duration : float = 1.5
 @export var bubble_max_size : int = 200
 @export var animate_process: bool = true
+
+@export var animated_shape: AnimatedSprite2D
 
 var is_busy : bool = false
 var current_shape : SS2D_Shape
@@ -84,6 +87,8 @@ func _ProcessShape(shape : SS2D_Shape, reset: bool = false) -> void:
 	tween.tween_property(shape, "global_position", global_position, slide_duration)
 	tween.tween_callback((
 		func ():
+			if(animated_shape != null):
+				animated_shape.play()
 			if(reset):
 				_ResetShape(shape)
 			match current_type:
@@ -96,7 +101,13 @@ func _ProcessShape(shape : SS2D_Shape, reset: bool = false) -> void:
 				_:
 					pass
 	))
-	tween.tween_interval(1)
+	tween.tween_interval(animation_duration)
+	tween.tween_callback(
+		func ():
+			if(animated_shape != null):
+				animated_shape.pause()
+				animated_shape.set_frame_and_progress(0, 0.0)
+	)
 	if(animate_process):
 		tween.tween_callback(
 			func(): 

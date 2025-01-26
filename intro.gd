@@ -12,6 +12,7 @@ extends TextureRect
 
 @export var intro_sound: AudioStreamPlayer
 @export var transition_sound: AudioStreamPlayer
+@export var music: AudioStreamPlayer
 
 
 # Called when the node enters the scene tree for the first time.
@@ -40,6 +41,10 @@ func _Transition() -> void:
 	transition_screen.visible = true
 	var tween = get_tree().create_tween()
 	tween.tween_property(transition_screen, "modulate:a", 1, 1)
-	tween.tween_callback(func() : self.visible = false)
+	tween.tween_callback(
+		func() : 
+			self.visible = false
+			music.play()
+	)
 	tween.tween_property(transition_screen, "modulate:a", 0, 1)
 	tween.tween_callback(func() : transition_screen.visible = false)

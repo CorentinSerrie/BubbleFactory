@@ -11,3 +11,5 @@
 main menu
 2 more machines
 	choose initial shape
+
+	machine animation
